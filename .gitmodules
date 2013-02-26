@@ -1,3 +1,6 @@
 [submodule "vim/bundle/vim-ack"]
 	path = vim/bundle/vim-ack
 	url = git://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/vim-scrollcolours"]
+	path = vim/bundle/vim-scrollcolours
+	url = git://github.com/vim-scripts/ScrollColors.git
