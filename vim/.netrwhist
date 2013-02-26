@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/srv/www/dev.zeptech.ca/bwgent/target/zpt'
-let g:netrw_dirhist_2='/srv/www/dev.zeptech.ca/bwgent/target/zpt/dyn'
-let g:netrw_dirhist_3='/srv/www/dev.zeptech.ca/bwgent/modules/zed/htdocs/css/zed'
-let g:netrw_dirhist_4='/home/pgraham/dotfiles'
