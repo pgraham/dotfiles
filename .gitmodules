@@ -4,3 +4,6 @@
 [submodule "vim/bundle/vim-scrollcolours"]
 	path = vim/bundle/vim-scrollcolours
 	url = git://github.com/vim-scripts/ScrollColors.git
+[submodule "vim/bundle/vim-colorschemes"]
+	path = vim/bundle/vim-colorschemes
+	url = git@github.com:flazz/vim-colorschemes.git
