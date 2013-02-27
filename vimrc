@@ -1,6 +1,3 @@
-autocmd BufNewFile,BufRead *.json set ft=javascript
-autocmd BufRead *.php inoremap # X#
-
 call pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -25,6 +22,7 @@ set relativenumber
 
 let mapleader = ","
 
+
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
@@ -35,6 +33,8 @@ set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <tab> %
+
+nnoremap <leader>q gqip
 
 set wrap
 set textwidth=80
@@ -53,6 +53,12 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 nnoremap ; :
 
-au FocusLost * :wa          " Automatically save files when focus is lost
+" Automatically save files when focus is lost
+au FocusLost * :wa
 
-nnoremap <leader>q gqip
+" Apply Javascript syntax highlighting to JSON files
+autocmd BufNewFile,BufRead *.json set ft=javascript 
+
+" Remove jump to start of line for lines starting with #
+autocmd BufRead *.php inoremap # X#
+
