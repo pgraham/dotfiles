@@ -18,7 +18,10 @@ set expandtab
 set scrolloff=3
 set showmode
 set ttyfast
-set relativenumber
+
+if has('relativenumber')
+  set relativenumber
+endif
 
 let mapleader = ","
 
@@ -39,7 +42,9 @@ nnoremap <leader>q gqip
 set wrap
 set textwidth=80
 set formatoptions=tcqrn1
-set colorcolumn=81
+if has('colorcolumn')
+  set colorcolumn=81
+endif
 
 set list
 set listchars=tab:▸\ ,eol:¬
