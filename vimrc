@@ -24,6 +24,8 @@ if has('relativenumber')
 endif
 
 let mapleader = ","
+nnoremap <leader>s :w<cr>
+nnoremap <leader>x :wq<cr>
 
 
 nnoremap / /\v
@@ -52,6 +54,7 @@ set listchars=tab:▸\ ,eol:¬
 nnoremap j gj
 nnoremap k gk
 nnoremap $ g$
+nnoremap 0 g0
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -64,6 +67,9 @@ au FocusLost * :wa
 
 " Apply Javascript syntax highlighting to JSON files
 autocmd BufNewFile,BufRead *.json set ft=javascript 
+
+" Apply psql syntax highlighting to pgsql files
+au BufNewFile,BufRead *.pgsql setf psql
 
 " Remove jump to start of line for lines starting with #
 autocmd BufRead *.php inoremap # X#
