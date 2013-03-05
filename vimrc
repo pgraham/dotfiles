@@ -51,6 +51,7 @@ nnoremap $ g$
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+inoremap ;; <ESC>
 nnoremap ; :
 
 " Automatically save files when focus is lost
