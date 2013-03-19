@@ -37,8 +37,8 @@ set incsearch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
-nnoremap <tab> %
 
+" Reflow a paragraph of text based on wrapping rules
 nnoremap <leader>q gqip
 
 set wrap
