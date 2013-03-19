@@ -7,3 +7,6 @@ alias ll='ls -alhF --color=always | grep "^d" &&
 alias lll='ls -lhF --color=always | grep "^d" &&
            ls -lhF --color=always | grep "^[l-]"
            ls -lhF | grep "^total"'
+
+alias hgdiff='hg diff --color=always'
+alias hgqdiff='hg qdiff --color=always'
