@@ -19,37 +19,37 @@ set scrolloff=3
 set showmode
 set ttyfast
 
-if has('relativenumber')
-  set relativenumber
-endif
-
-let mapleader = ","
-nnoremap <leader>s :w<cr>
-nnoremap <leader>x :wq<cr>
-
-
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
 
-" Reflow a paragraph of text based on wrapping rules
-nnoremap <leader>q gqip
+set list
+set listchars=tab:▸\ ,eol:¬
 
 set wrap
 set textwidth=80
 set formatoptions=tcqrn1
+
+if has('relativenumber')
+  set relativenumber
+endif
+
 if has('colorcolumn')
   set colorcolumn=81
 endif
 
-set list
-set listchars=tab:▸\ ,eol:¬
+let mapleader = ","
+nnoremap <leader>s :w<cr>
+nnoremap <leader>x :wq<cr>
+nnoremap <leader><space> :noh<cr>
+" Reflow a paragraph of text based on wrapping rules
+nnoremap <leader>q gqip
+
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <tab> %
 
 nnoremap j gj
 nnoremap k gk
@@ -59,7 +59,7 @@ nnoremap 0 g0
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-inoremap ;; <ESC>
+inoremap jj <ESC>:w<cr>
 nnoremap ; :
 
 " Automatically save files when focus is lost
