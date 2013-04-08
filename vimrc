@@ -19,6 +19,18 @@ set scrolloff=3
 set showmode
 set ttyfast
 
+if exists('&relativenumber')
+  set relativenumber
+endif
+
+let mapleader = ","
+nnoremap <leader>s :w<cr>
+nnoremap <leader>x :wq<cr>
+
+
+nnoremap / /\v
+vnoremap / /\v
+
 set ignorecase
 set smartcase
 set gdefault
@@ -31,12 +43,7 @@ set listchars=tab:▸\ ,eol:¬
 set wrap
 set textwidth=80
 set formatoptions=tcqrn1
-
-if has('relativenumber')
-  set relativenumber
-endif
-
-if has('colorcolumn')
+if exists('&colorcolumn')
   set colorcolumn=81
 endif
 
