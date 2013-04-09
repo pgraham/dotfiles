@@ -1,0 +1,5 @@
+set hlsearch on
+ino jj <ESC>:w<cr>
+nnoremap ,<space> :noh<cr>
+nnoremap ,s :w<cr>
+nnoremap <tab> %
