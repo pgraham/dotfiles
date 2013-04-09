@@ -69,6 +69,23 @@ vnoremap <F1> <ESC>
 inoremap jj <ESC>:w<cr>
 nnoremap ; :
 
+" Auto complete brackets and quotes
+inoremap { {}<Esc>:let leavechar="}"<CR>i
+inoremap ( ()<Esc>:let leavechar=")"<CR>i
+inoremap [ []<Esc>:let leavechar="]"<CR>i
+inoremap " ""<Esc>:let leavechar="\""<CR>i
+inoremap ' ''<Esc>:let leavechar="'"<CR>i
+
+inoremap {<CR> {<CR>}<Esc>:let leavechar="}"<CR>ko
+inoremap (<CR> (<CR>)<Esc>:let leavechar=")"<CR>ko
+inoremap [<CR> [<CR>]<Esc>:let leavechar="]"<CR>ko
+
+" Jump past ending bracket
+imap <C-j> <Esc>:exec "normal f" . leavechar<CR>a
+
+" Insert blank line without entering insert mode.  Stay on current line
+nnoremap <CR> o<Esc>k
+
 " Automatically save files when focus is lost
 au FocusLost * :wa
 
