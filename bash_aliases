@@ -10,3 +10,5 @@ alias lll='ls -lhF --color=always | grep "^d" &&
 
 alias hgdiff='hg diff --color=always'
 alias hgqdiff='hg qdiff --color=always'
+
+alias tailphp='tail -f ~/logs/php.error'

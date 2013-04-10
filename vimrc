@@ -63,18 +63,41 @@ inoremap jj <ESC>:w<cr>
 nnoremap ; :
 
 " Auto complete brackets and quotes
-inoremap { {}<Esc>:let leavechar="}"<CR>i
-inoremap ( ()<Esc>:let leavechar=")"<CR>i
-inoremap [ []<Esc>:let leavechar="]"<CR>i
-inoremap " ""<Esc>:let leavechar="\""<CR>i
-inoremap ' ''<Esc>:let leavechar="'"<CR>i
 
-inoremap {<CR> {<CR>}<Esc>:let leavechar="}"<CR>ko
-inoremap (<CR> (<CR>)<Esc>:let leavechar=")"<CR>ko
-inoremap [<CR> [<CR>]<Esc>:let leavechar="]"<CR>ko
+let s:autoCloseStack = []
+let autoCloseBrace = "/\}\<CR>"
+let autoCloseParen = "/\\)\<CR>"
+let autoCloseBracket = "/\]\<CR>"
 
-" Jump past ending bracket
-imap <C-j> <Esc>:exec "normal f" . leavechar<CR>a
+function PushAutoClose(cmd)
+  call insert(s:autoCloseStack, a:cmd)
+endfunction
+
+function PopAutoClose()
+  if empty(s:autoCloseStack)
+    return 'l'
+  else
+    return remove(s:autoCloseStack, 0)
+  endif
+endfunction
+
+function LeaveAutoClose()
+  let leaveAutoCloseCmd = PopAutoClose()
+  execute "normal " . PopAutoClose()
+endfunction
+
+inoremap { {}<Esc>:call PushAutoClose("f}")<CR>i
+inoremap ( ()<Esc>:call PushAutoClose("f)")<CR>i
+inoremap [ []<Esc>:call PushAutoClose("f]")<CR>i
+inoremap " ""<Esc>:call PushAutoClose('f"')<CR>i
+inoremap ' ''<Esc>:call PushAutoClose("f'")<CR>i
+
+inoremap {<CR> {<CR>}<Esc>:call PushAutoClose(autoCloseBrace)<CR>ko
+inoremap (<CR> (<CR>)<Esc>:call PushAutoClose(autoCloseParen)<CR>ko
+inoremap [<CR> [<CR>]<Esc>:call PushAutoClose(autoCloseBracket)<CR>ko
+
+" Jump past next auto-closed bracket/quote
+imap <C-j> <Esc>:exec "normal " . PopAutoClose()<CR>a
 
 " Insert blank line without entering insert mode.  Stay on current line
 nnoremap <CR> o<Esc>k
