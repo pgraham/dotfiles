@@ -23,14 +23,6 @@ if exists('&relativenumber')
   set relativenumber
 endif
 
-let mapleader = ","
-nnoremap <leader>s :w<cr>
-nnoremap <leader>x :wq<cr>
-
-
-nnoremap / /\v
-vnoremap / /\v
-
 set ignorecase
 set smartcase
 set gdefault
