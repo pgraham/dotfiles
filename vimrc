@@ -43,6 +43,7 @@ let mapleader = ","
 nnoremap <leader>s :w<cr>
 nnoremap <leader>x :wq<cr>
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader>m :%s/
 " Reflow a paragraph of text based on wrapping rules
 nnoremap <leader>q gqip
 
