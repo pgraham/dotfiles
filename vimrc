@@ -81,7 +81,7 @@ endfunction
 
 function PopAutoClose()
   if empty(s:autoCloseStack)
-    return 'l'
+    return '$'
   else
     return remove(s:autoCloseStack, 0)
   endif
@@ -102,11 +102,17 @@ inoremap {<CR> {<CR>}<Esc>:call PushAutoClose(autoCloseBrace)<CR>ko
 inoremap (<CR> (<CR>)<Esc>:call PushAutoClose(autoCloseParen)<CR>ko
 inoremap [<CR> [<CR>]<Esc>:call PushAutoClose(autoCloseBracket)<CR>ko
 
+inoremap {<BS> <Nop>
+inoremap (<BS> <Nop>
+inoremap [<BS> <Nop>
+inoremap "<BS> <Nop>
+inoremap '<BS> <Nop>
+
 " Jump past next auto-closed bracket/quote
 imap <C-j> <Esc>:exec "normal " . PopAutoClose()<CR>a
 
 " Insert blank line without entering insert mode.  Stay on current line
-nnoremap <CR> o<Esc>k
+nnoremap <CR> o<Esc>
 
 " Automatically save files when focus is lost
 au FocusLost * :wa
