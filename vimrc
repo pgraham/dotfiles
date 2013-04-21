@@ -1,4 +1,4 @@
-call pathogen#infect()
+﻿call pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -30,7 +30,7 @@ set incsearch
 set hlsearch
 
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:→\ ,eol:¬
 
 set wrap
 set textwidth=80
