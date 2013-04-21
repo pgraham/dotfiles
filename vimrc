@@ -1,4 +1,4 @@
-call pathogen#infect()
+﻿call pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -23,13 +23,6 @@ if exists('&relativenumber')
   set relativenumber
 endif
 
-let mapleader = ","
-nnoremap <leader>s :w<cr>
-nnoremap <leader>x :wq<cr>
-
-nnoremap / /\v
-vnoremap / /\v
-
 set ignorecase
 set smartcase
 set gdefault
@@ -37,7 +30,7 @@ set incsearch
 set hlsearch
 
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:→\ ,eol:¬
 
 set wrap
 set textwidth=80
@@ -50,6 +43,7 @@ let mapleader = ","
 nnoremap <leader>s :w<cr>
 nnoremap <leader>x :wq<cr>
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader>m :%s/
 " Reflow a paragraph of text based on wrapping rules
 nnoremap <leader>q gqip
 
