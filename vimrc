@@ -65,9 +65,9 @@ nnoremap ; :
 " Auto complete brackets and quotes
 
 let s:autoCloseStack = []
-let autoCloseBrace = "/\}\<CR>"
-let autoCloseParen = "/\\)\<CR>"
-let autoCloseBracket = "/\]\<CR>"
+let autoCloseBrace = "/\}\<CR>:noh<cr>"
+let autoCloseParen = "/\\)\<CR>:noh<cr>"
+let autoCloseBracket = "/\]\<CR>:noh<cr>"
 
 function PushAutoClose(cmd)
   call insert(s:autoCloseStack, a:cmd)
