@@ -13,7 +13,6 @@ colorscheme twilight256
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
-set expandtab
 
 set scrolloff=3
 set showmode
@@ -50,6 +49,7 @@ nnoremap <leader>q gqip
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <tab> %
+vnoremap <tab> %
 
 nnoremap j gj
 nnoremap k gk
@@ -96,17 +96,28 @@ inoremap {<CR> {<CR>}<Esc>:call PushAutoClose(autoCloseBrace)<CR>ko
 inoremap (<CR> (<CR>)<Esc>:call PushAutoClose(autoCloseParen)<CR>ko
 inoremap [<CR> [<CR>]<Esc>:call PushAutoClose(autoCloseBracket)<CR>ko
 
+" Add mappings to delete the closing brace if the opening brace is deleted
+" immediately
 inoremap {<BS> <Nop>
 inoremap (<BS> <Nop>
 inoremap [<BS> <Nop>
 inoremap "<BS> <Nop>
 inoremap '<BS> <Nop>
 
+" Add mappings to _not_ to autocomplete when closing charater is typed
+" immediately after opening character
+inoremap {} {}
+inoremap () ()
+inoremap [] []
+inoremap "" ""
+inoremap '' ''
+
 " Jump past next auto-closed bracket/quote
 imap <C-j> <Esc>:exec "normal " . PopAutoClose()<CR>a
 
 " Insert blank line without entering insert mode.  Stay on current line
 nnoremap <CR> o<Esc>
+nnoremap OM i<CR><ESC>l
 
 " Automatically save files when focus is lost
 au FocusLost * :wa
