@@ -39,9 +39,9 @@ if exists('&colorcolumn')
 endif
 
 let mapleader = ","
-nnoremap <leader>s :w<cr>
-nnoremap <leader>x :wq<cr>
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader>s :w<CR>
+nnoremap <leader>x :wq<CR>
+nnoremap <leader><space> :noh<CR>
 nnoremap <leader>m :%s/
 " Reflow a paragraph of text based on wrapping rules
 nnoremap <leader>q gqip
@@ -59,15 +59,15 @@ nnoremap 0 g0
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-inoremap jj <ESC>:w<cr>
+inoremap jj <ESC>:w<CR>
 nnoremap ; :
 
 " Auto complete brackets and quotes
 
 let s:autoCloseStack = []
-let autoCloseBrace = "/\}\<CR>:noh<cr>"
-let autoCloseParen = "/\\)\<CR>:noh<cr>"
-let autoCloseBracket = "/\]\<CR>:noh<cr>"
+let autoCloseBrace = "/\}\<CR>:noh<CR>"
+let autoCloseParen = "/\\)\<CR>:noh<CR>"
+let autoCloseBracket = "/\]\<CR>:noh<CR>"
 
 function PushAutoClose(cmd)
   call insert(s:autoCloseStack, a:cmd)
@@ -79,11 +79,6 @@ function PopAutoClose()
   else
     return remove(s:autoCloseStack, 0)
   endif
-endfunction
-
-function LeaveAutoClose()
-  let leaveAutoCloseCmd = PopAutoClose()
-  execute "normal " . PopAutoClose()
 endfunction
 
 inoremap { {}<Esc>:call PushAutoClose("f}")<CR>i
