@@ -39,9 +39,11 @@ if exists('&colorcolumn')
 endif
 
 let mapleader = ","
-nnoremap <leader>s :w<CR>
-nnoremap <leader>x :wq<CR>
-nnoremap <leader><space> :noh<CR>
+nnoremap <leader>s :w<cr>
+nnoremap <leader>xx :wq<cr>
+nnoremap <leader>xa :wqa<cr>
+nnoremap <leader>xo :only<cr>
+nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
 " Reflow a paragraph of text based on wrapping rules
 nnoremap <leader>q gqip
@@ -56,18 +58,18 @@ nnoremap k gk
 nnoremap $ g$
 nnoremap 0 g0
 
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-inoremap jj <ESC>:w<CR>
+inoremap <F1> <esc>
+nnoremap <F1> <esc>
+vnoremap <F1> <esc>
+inoremap jj <esc>:w<cr>
 nnoremap ; :
 
 " Auto complete brackets and quotes
 
 let s:autoCloseStack = []
-let autoCloseBrace = "/\}\<CR>:noh<CR>"
-let autoCloseParen = "/\\)\<CR>:noh<CR>"
-let autoCloseBracket = "/\]\<CR>:noh<CR>"
+let autoCloseBrace = "/\}\<cr>"
+let autoCloseParen = "/\\)\<cr>"
+let autoCloseBracket = "/\]\<cr>"
 
 function PushAutoClose(cmd)
   call insert(s:autoCloseStack, a:cmd)
@@ -81,15 +83,15 @@ function PopAutoClose()
   endif
 endfunction
 
-inoremap { {}<Esc>:call PushAutoClose("f}")<CR>i
-inoremap ( ()<Esc>:call PushAutoClose("f)")<CR>i
-inoremap [ []<Esc>:call PushAutoClose("f]")<CR>i
-inoremap " ""<Esc>:call PushAutoClose('f"')<CR>i
-inoremap ' ''<Esc>:call PushAutoClose("f'")<CR>i
+inoremap { {}<esc>:call PushAutoClose("f}")<cr>i
+inoremap ( ()<esc>:call PushAutoClose("f)")<cr>i
+inoremap [ []<esc>:call PushAutoClose("f]")<cr>i
+inoremap " ""<esc>:call PushAutoClose('f"')<cr>i
+inoremap ' ''<esc>:call PushAutoClose("f'")<cr>i
 
-inoremap {<CR> {<CR>}<Esc>:call PushAutoClose(autoCloseBrace)<CR>ko
-inoremap (<CR> (<CR>)<Esc>:call PushAutoClose(autoCloseParen)<CR>ko
-inoremap [<CR> [<CR>]<Esc>:call PushAutoClose(autoCloseBracket)<CR>ko
+inoremap {<cr> {<cr>}<esc>:call PushAutoClose(autoCloseBrace)<cr>ko
+inoremap (<cr> (<cr>)<esc>:call PushAutoClose(autoCloseParen)<cr>ko
+inoremap [<cr> [<cr>]<esc>:call PushAutoClose(autoCloseBracket)<cr>ko
 
 " Add mappings to delete the closing brace if the opening brace is deleted
 " immediately
@@ -108,11 +110,12 @@ inoremap "" ""
 inoremap '' ''
 
 " Jump past next auto-closed bracket/quote
-imap <C-j> <Esc>:exec "normal " . PopAutoClose()<CR>a
+imap <C-j> <esc>:exec "normal " . PopAutoClose()<cr>:noh<cr>a
 
 " Insert blank line without entering insert mode.  Stay on current line
-nnoremap <CR> o<Esc>
-nnoremap OM i<CR><ESC>l
+noremap <cr> o<esc>
+nnoremap OM i<cr><esc>l
+nnoremap <leader>nl i<cr><esc>l
 
 " Automatically save files when focus is lost
 au FocusLost * :wa
