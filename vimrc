@@ -68,7 +68,7 @@ nnoremap ; :
 
 inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
              \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-             \ "external_mapping"
+             \ "<CR>"
 
 "let s:autoCloseStack = []
 "let autoCloseBrace = "/\}\<cr>"
