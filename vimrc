@@ -66,51 +66,55 @@ nnoremap ; :
 
 " Auto complete brackets and quotes
 
-let s:autoCloseStack = []
-let autoCloseBrace = "/\}\<cr>"
-let autoCloseParen = "/\\)\<cr>"
-let autoCloseBracket = "/\]\<cr>"
+inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+             \ "external_mapping"
 
-function PushAutoClose(cmd)
-  call insert(s:autoCloseStack, a:cmd)
-endfunction
+"let s:autoCloseStack = []
+"let autoCloseBrace = "/\}\<cr>"
+"let autoCloseParen = "/\\)\<cr>"
+"let autoCloseBracket = "/\]\<cr>"
 
-function PopAutoClose()
-  if empty(s:autoCloseStack)
-    return '$'
-  else
-    return remove(s:autoCloseStack, 0)
-  endif
-endfunction
+"function PushAutoClose(cmd)
+"  call insert(s:autoCloseStack, a:cmd)
+"endfunction
 
-inoremap { {}<esc>:call PushAutoClose("f}")<cr>i
-inoremap ( ()<esc>:call PushAutoClose("f)")<cr>i
-inoremap [ []<esc>:call PushAutoClose("f]")<cr>i
-inoremap " ""<esc>:call PushAutoClose('f"')<cr>i
-inoremap ' ''<esc>:call PushAutoClose("f'")<cr>i
+"function PopAutoClose()
+"  if empty(s:autoCloseStack)
+"    return '$'
+"  else
+"    return remove(s:autoCloseStack, 0)
+"  endif
+"endfunction
 
-inoremap {<cr> {<cr>}<esc>:call PushAutoClose(autoCloseBrace)<cr>ko
-inoremap (<cr> (<cr>)<esc>:call PushAutoClose(autoCloseParen)<cr>ko
-inoremap [<cr> [<cr>]<esc>:call PushAutoClose(autoCloseBracket)<cr>ko
+"inoremap { {}<esc>:call PushAutoClose("f}")<cr>i
+"inoremap ( ()<esc>:call PushAutoClose("f)")<cr>i
+"inoremap [ []<esc>:call PushAutoClose("f]")<cr>i
+"inoremap " ""<esc>:call PushAutoClose('f"')<cr>i
+"inoremap ' ''<esc>:call PushAutoClose("f'")<cr>i
+
+"inoremap {<cr> {<cr>}<esc>:call PushAutoClose(autoCloseBrace)<cr>ko
+"inoremap (<cr> (<cr>)<esc>:call PushAutoClose(autoCloseParen)<cr>ko
+"inoremap [<cr> [<cr>]<esc>:call PushAutoClose(autoCloseBracket)<cr>ko
 
 " Add mappings to delete the closing brace if the opening brace is deleted
 " immediately
-inoremap {<BS> <Nop>
-inoremap (<BS> <Nop>
-inoremap [<BS> <Nop>
-inoremap "<BS> <Nop>
-inoremap '<BS> <Nop>
+"inoremap {<BS> <Nop>
+"inoremap (<BS> <Nop>
+"inoremap [<BS> <Nop>
+"inoremap "<BS> <Nop>
+"inoremap '<BS> <Nop>
 
 " Add mappings to _not_ to autocomplete when closing charater is typed
 " immediately after opening character
-inoremap {} {}
-inoremap () ()
-inoremap [] []
-inoremap "" ""
-inoremap '' ''
+"inoremap {} {}
+"inoremap () ()
+"inoremap [] []
+"inoremap "" ""
+"inoremap '' ''
 
 " Jump past next auto-closed bracket/quote
-imap <C-j> <esc>:exec "normal " . PopAutoClose()<cr>:noh<cr>a
+"imap <C-j> <esc>:exec "normal " . PopAutoClose()<cr>:noh<cr>a
 
 " Insert blank line without entering insert mode.  Stay on current line
 noremap <cr> o<esc>
