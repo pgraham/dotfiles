@@ -120,9 +120,6 @@ nnoremap <leader>nl i<cr><esc>l
 " Automatically save files when focus is lost
 au FocusLost * :wa
 
-" Apply Javascript syntax highlighting to JSON files
-autocmd BufNewFile,BufRead *.json set ft=javascript 
-
 " Apply psql syntax highlighting to pgsql files
 au BufNewFile,BufRead *.pgsql setf psql
 
