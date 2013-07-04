@@ -117,8 +117,9 @@ inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
 "imap <C-j> <esc>:exec "normal " . PopAutoClose()<cr>:noh<cr>a
 
 " Insert blank line without entering insert mode.  Stay on current line
-noremap <cr> o<esc>
-nnoremap OM i<cr><esc>l
+nnoremap <cr> o<esc>
+
+" Insert linebreak under cursor without entering insert mode
 nnoremap <leader>nl i<cr><esc>l
 
 " Map C-n to open NERDTree
