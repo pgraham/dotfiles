@@ -121,6 +121,9 @@ noremap <cr> o<esc>
 nnoremap OM i<cr><esc>l
 nnoremap <leader>nl i<cr><esc>l
 
+" Map C-n to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " Automatically save files when focus is lost
 au FocusLost * :wa
 
@@ -130,3 +133,5 @@ au BufNewFile,BufRead *.pgsql setf psql
 " Remove jump to start of line for lines starting with #
 autocmd BufRead *.php inoremap # X#
 
+" Automatically open a NERDTree if Vim is open with no argument
+autocmd vimenter * if !argc() | NERDTree | endif
