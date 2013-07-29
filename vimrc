@@ -1,15 +1,31 @@
 ﻿call pathogen#infect()
 syntax on
 filetype plugin indent on
-
 set nocompatible
-
 set modelines=0
 
+" Colour config
 set t_Co=256
 set background=dark
 colorscheme twilight256
 
+" Status line config
+if (has('statusline'))
+  set laststatus=2
+
+  set statusline=%<%f\                           " Filename
+  set statusline+=%w%h%m%r                       " Options
+  set statusline+=%{fugitive#statusline()}       " Git
+  set statusline+=\ [%{&ff}/%Y]                  " Filetype
+  set statusline+=\ %#warningmsg#
+  set statusline+=\ %{SyntasticStatuslineFlag()} " Syntastic
+  set statusline+=%*
+  set statusline+=%=%-14.(%l,%c%V%)\ %p%%        " Right aligned file nav info
+
+  let g:syntastic_enable_signs=1
+endif
+
+" Tab config
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
@@ -136,3 +152,6 @@ autocmd BufRead *.php inoremap # X#
 
 " Automatically open a NERDTree if Vim is open with no argument
 autocmd vimenter * if !argc() | NERDTree | endif
+
+" Automatically remove trailing whitespace on write
+autocmd BufWritePre *.php :%s/\s\+$//e
