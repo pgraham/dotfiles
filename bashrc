@@ -97,3 +97,9 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# This file is part of the dotfiles repo and so contains generic instructions
+# For local commands use ~/.bash_local
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
+fi
