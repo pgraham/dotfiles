@@ -54,11 +54,11 @@ if exists('&colorcolumn')
   set colorcolumn=81
 endif
 
+" A couple of mappings to complement ZZ and ZQ
+nnoremap ZA :wqa<cr>
+nnoremap ZO :only
+
 let mapleader = ","
-nnoremap <leader>s :w<cr>
-nnoremap <leader>xx :wq<cr>
-nnoremap <leader>xa :wqa<cr>
-nnoremap <leader>xo :only<cr>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
 " Reflow a paragraph of text based on wrapping rules
