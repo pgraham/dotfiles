@@ -153,5 +153,5 @@ autocmd BufRead *.php inoremap # X#
 " Automatically open a NERDTree if Vim is open with no argument
 autocmd vimenter * if !argc() | NERDTree | endif
 
-" Automatically remove trailing whitespace on write
-autocmd BufWritePre *.php :%s/\s\+$//e
+" Automatically remove trailing whitespace on buffer close
+autocmd BufLeave *.php :%s/\s\+$//e
