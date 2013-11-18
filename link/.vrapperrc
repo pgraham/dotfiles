@@ -1,5 +1,15 @@
+set ignorecase on
+set smartcase on
+set incsearch on
 set hlsearch on
 ino jj <ESC>:w<cr>
+
+nnoremap ZA :wqa<cr>
+nnoremap ZO :only
+
 nnoremap ,<space> :noh<cr>
-nnoremap ,s :w<cr>
 nnoremap <tab> %
+vnoremap <tab> %
+
+nnoremap <cr> o<esc>
+nnoremap ,nl i<cr><esc>l
