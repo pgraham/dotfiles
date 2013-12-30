@@ -56,9 +56,14 @@ shopt -s nullglob
 
 # If repository isn't cloned yet do it!
 if [[ ! -d ~/.dotfiles ]]; then
-  log_header "Downloading dotfiles"
+  log_info "Downloading dotfiles"
   git clone --recursive git://github.com/pgraham/dotfiles.git ~/.dotfiles
   cd ~/.dotfiles
+else
+  log_info "Updating dotfiles"
+  cd ~/.dotfiles
+  git pull
+  git submodule update --init --recursive --quiet
 fi
 
 link_files
