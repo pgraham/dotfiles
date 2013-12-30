@@ -1,48 +1,48 @@
-[submodule "vim/bundle/vim-ack"]
-	path = vim/bundle/vim-ack
+[submodule "link/vim/bundle/vim-ack"]
+	path = link/vim/bundle/vim-ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "vim/bundle/vim-scrollcolours"]
-	path = vim/bundle/vim-scrollcolours
+[submodule "link/vim/bundle/vim-scrollcolours"]
+	path = link/vim/bundle/vim-scrollcolours
 	url = git://github.com/vim-scripts/ScrollColors.git
-[submodule "vim/bundle/vim-colorschemes"]
-	path = vim/bundle/vim-colorschemes
+[submodule "link/vim/bundle/vim-colorschemes"]
+	path = link/vim/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
+[submodule "link/vim/bundle/vim-fugitive"]
+	path = link/vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/vim-less"]
-	path = vim/bundle/vim-less
+[submodule "link/vim/bundle/vim-less"]
+	path = link/vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less
-[submodule "vim/bundle/vim-sensible"]
-	path = vim/bundle/vim-sensible
+[submodule "link/vim/bundle/vim-sensible"]
+	path = link/vim/bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible.git
-[submodule "vim/bundle/vim-sleuth"]
-	path = vim/bundle/vim-sleuth
+[submodule "link/vim/bundle/vim-sleuth"]
+	path = link/vim/bundle/vim-sleuth
 	url = git://github.com/tpope/vim-sleuth.git
-[submodule "vim/bundle/nerdcommenter"]
-	path = vim/bundle/nerdcommenter
+[submodule "link/vim/bundle/nerdcommenter"]
+	path = link/vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
+[submodule "link/vim/bundle/vim-surround"]
+	path = link/vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/vim-json"]
-	path = vim/bundle/vim-json
+[submodule "link/vim/bundle/vim-json"]
+	path = link/vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
-[submodule "vim/bundle/delimitMate"]
-	path = vim/bundle/delimitMate
+[submodule "link/vim/bundle/delimitMate"]
+	path = link/vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
+[submodule "link/vim/bundle/nerdtree"]
+	path = link/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
+[submodule "link/vim/bundle/syntastic"]
+	path = link/vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/vim-repeat"]
-	path = vim/bundle/vim-repeat
+[submodule "link/vim/bundle/vim-repeat"]
+	path = link/vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/vim-abolish"]
-	path = vim/bundle/vim-abolish
+[submodule "link/vim/bundle/vim-abolish"]
+	path = link/vim/bundle/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
-[submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
+[submodule "link/vim/bundle/vim-commentary"]
+	path = link/vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
