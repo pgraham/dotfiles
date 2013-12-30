@@ -54,6 +54,31 @@ function backup() {
 shopt -s dotglob
 shopt -s nullglob
 
+# If Git is not installed install it
+if [[ ! "$(type -P git)" ]]; then
+
+  if [[ ! "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+    log_error "Unable to install Git. Please install manually and try again."
+    exit 1
+  fi
+
+  log_info "Installing Git."
+  sudo apt-get -qq install git
+
+  if [[ ! "$(type -P git)" ]]; then
+    log_error "Git should be installed. It isn't. Aborting."
+    exit 1
+  else
+    log_success "Git installed."
+  fi
+
+  # Configure git
+  log_info "Configuring git."
+  git config --global color.ui auto
+  git config --global user.email "philip.robert.graham@gmail.com"
+  git config --global user.name "Philip Graham"
+fi
+
 # If repository isn't cloned yet do it!
 if [[ ! -d ~/.dotfiles ]]; then
   log_info "Downloading dotfiles"
