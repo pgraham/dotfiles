@@ -109,3 +109,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 " Automatically remove trailing whitespace on buffer close
 autocmd BufLeave *.php :%s/\s\+$//e
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
