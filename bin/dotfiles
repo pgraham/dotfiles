@@ -26,6 +26,11 @@ function link_files() {
   local files=(~/.dotfiles/link/*)
 
   for file in "${files[@]}"; do
+
+    if [[ $file = *.un~ ]]; then
+      continue
+    fi
+
     base="$(basename $file)"
     dest="$HOME/$base"
 
