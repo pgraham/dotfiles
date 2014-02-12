@@ -4,6 +4,8 @@ filetype plugin indent on
 set nocompatible
 set modelines=0
 
+let mapleader = ","
+
 " Colour config
 set t_Co=256
 set background=dark
@@ -25,11 +27,28 @@ if (has('statusline'))
   let g:syntastic_enable_signs=1
 endif
 
-" Tab config
+" Indentation config. This is just the default, plugin will autodetect using
+" current file or other files in the same directory.
+"
+" Mappings>
+"  -  :Tabs <width>  -->  Use tabs for indentation with a specified width
+"
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+function SetTabs(width)
+  let &shiftwidth=a:width
+  let &tabstop=a:width
+  set noexpandtab
+endfunction
+com -nargs=* Tabs call SetTabs(<f-args>)
+
+" Show whitespace characters
+set list
+set listchars=tab:→\ ,eol:¬
+
+" Display misc.
 set scrolloff=3
 set showmode
 set ttyfast
@@ -38,15 +57,39 @@ if exists('&relativenumber')
   set relativenumber
 endif
 
+" Tab navigation.
+"
+" Mappings>
+"  -  <shift>h  -->  Previous tab
+"  -  <shift>l  -->  Next tab
+"
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+ca tn tabnew
+
+" Search config. Search results are automatically highlighted. Searches use
+" normal regular expressions.
+"
+" Mappings>
+"  -  ,<space>  -->  Un-highlight search matches
+"  -  ,m        -->  Start a replace match, same as :%s/
+"
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set hlsearch
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <leader><space> :noh<cr>
+nnoremap <leader>m :%s/
 
-set list
-set listchars=tab:→\ ,eol:¬
-
+" Text width & wrapping. Defaults to wrapping after 80 characters.
+"
+" Mappings>
+"  -  :Nowrap  -->  Turn off wrapping.
+"  -  ,q       -->  Reflow a paragraph of text.
+"
 set wrap
 set textwidth=80
 set formatoptions=tcqrn1
@@ -54,34 +97,43 @@ if exists('&colorcolumn')
   set colorcolumn=81
 endif
 
+command Nowrap set textwidth=0
+nnoremap <leader>q gqip
+
 " A couple of mappings to complement ZZ and ZQ
+"
+"  -  ZA  -->  Quit all
+"  -  ZO  -->  Quit others
+"
 nnoremap ZA :wqa<cr>
 nnoremap ZO :only
 
-let mapleader = ","
-nnoremap <leader><space> :noh<cr>
-nnoremap <leader>m :%s/
-" Reflow a paragraph of text based on wrapping rules
-nnoremap <leader>q gqip
-
-nnoremap / /\v
-vnoremap / /\v
+" Use <tab> to jump between matching delimiters
 nnoremap <tab> %
 vnoremap <tab> %
 
+" Make movement keys respect softwrapping by default
 nnoremap j gj
 nnoremap k gk
 nnoremap $ g$
 nnoremap 0 g0
 
+" Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>
 nnoremap <F1> <esc>
 vnoremap <F1> <esc>
+
+" Quickly exit insert mode
 inoremap jj <esc>:w<cr>
+
+" Map semicolon to colon to avoid extra <shift> press to entre cmdline mode.
+" Originally semicolon functionality is pressed by mapping to colon
 nnoremap ; :
+vnoremap ; :
+nnoremap : ;
+vnoremap : ;
 
 " Auto complete brackets and quotes
-
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
@@ -101,8 +153,11 @@ au FocusLost * :wa
 " Apply psql syntax highlighting to pgsql files
 au BufNewFile,BufRead *.pgsql setf psql
 
-" Remove jump to start of line for lines starting with #
-autocmd BufRead *.php inoremap # X#
+" Apply php syntax highlighting to php.tmpl files
+au BufNewFile,BufRead *.php.tmpl setf php
+
+" Remove jump to start of line for lines starting with # for php files
+autocmd BufRead *.php.tmpl inoremap # X#
 
 " Automatically open a NERDTree if Vim is open with no argument
 autocmd vimenter * if !argc() | NERDTree | endif
