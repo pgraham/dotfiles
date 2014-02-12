@@ -3,3 +3,5 @@
 *.netrwhist
 *~
 backups/
+
+link/.vim/**/tags
