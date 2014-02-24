@@ -106,7 +106,7 @@ nnoremap <leader>q gqip
 "  -  ZO  -->  Quit others
 "
 nnoremap ZA :wqa<cr>
-nnoremap ZO :only
+nnoremap ZO :only<cr>
 
 " Use <tab> to jump between matching delimiters
 nnoremap <tab> %
@@ -145,7 +145,7 @@ nnoremap <cr> o<esc>
 nnoremap <leader>nl i<cr><esc>l
 
 " Map C-n to open NERDTree
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Automatically save files when focus is lost
 au FocusLost * :wa
