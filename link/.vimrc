@@ -118,6 +118,11 @@ nnoremap k gk
 nnoremap $ g$
 nnoremap 0 g0
 
+nnoremap gj j
+nnoremap gk k
+nnoremap g$ $
+nnoremap g0 0
+
 " Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>
 nnoremap <F1> <esc>
