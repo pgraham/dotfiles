@@ -143,6 +143,10 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 
+" Map sideways.vim commands to key patterns
+nnoremap <leader>sh :SidewaysLeft<cr>
+nnoremap <leader>sl :SidewaysRight<cr>
+
 " Insert blank line without entering insert mode.  Stay on current line
 nnoremap <cr> o<esc>
 
