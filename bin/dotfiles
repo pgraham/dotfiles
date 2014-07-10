@@ -127,3 +127,8 @@ fi
 
 link_bin
 link_files
+
+# Create dump for Vim undo files if it doesn't already exist
+if [[ ! -d ~/.vim/undo ]]; then
+  mkdir ~/.vim/undo
+fi

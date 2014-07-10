@@ -5,3 +5,4 @@
 backups/
 
 link/.vim/**/tags
+link/.vim/undo

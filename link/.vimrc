@@ -11,6 +11,9 @@ set t_Co=256
 set background=dark
 colorscheme twilight256
 
+" Don't clutter directory tree with undo files
+set undodir=~/.vim/undo
+
 " Status line config
 if (has('statusline'))
   set laststatus=2
