@@ -78,6 +78,20 @@ function link_bin() {
   done
 }
 
+function init_config() {
+  if [ -f ~/.gitconfig-user ]; then
+    return
+  fi
+
+  read -p "Enter the name you wish to use with git: " gitname
+  read -p "Enter the email you wish to use with git: " gitemail
+
+  log_info "Writing git user config (name: $gitname, email: $gitemail)"
+  echo -e "[user]" > ~/.gitconfig-user
+  echo -e "\tname = $gitname" >> ~/.gitconfig-user
+  echo -e "\temail = $gitemail" >> ~/.gitconfig-user
+}
+
 backup_dir="$HOME/.dotfiles/backups/$(date "+%Y_%m_%d-%H_%M_%S")/"
 function backup() {
   [[ -e "$backup_dir" ]] || mkdir -p "$backup_dir"
@@ -108,10 +122,9 @@ if [[ ! "$(type -P git)" ]]; then
 
   # Configure git
   log_info "Configuring git."
-  git config --global color.ui auto
-  git config --global user.email "philip.robert.graham@gmail.com"
-  git config --global user.name "Philip Graham"
 fi
+
+init_config
 
 # If repository isn't cloned yet do it!
 if [[ ! -d ~/.dotfiles ]]; then
