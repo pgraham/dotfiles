@@ -40,6 +40,9 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+" Indent case: and default: statements inside switch statements
+:let g:PHP_vintage_case_default_indent = 1
+
 function SetTabs(width)
   let &shiftwidth=a:width
   let &tabstop=a:width
@@ -159,6 +162,9 @@ nnoremap <leader>nl i<cr><esc>l
 " Map C-n to open NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+" Automatically open a NERDTree if Vim is open with no argument
+autocmd vimenter * if !argc() | NERDTree | endif
+
 " Automatically save files when focus is lost
 au FocusLost * :wa
 
@@ -168,11 +174,8 @@ au BufNewFile,BufRead *.pgsql setf psql
 " Apply php syntax highlighting to php.tmpl files
 au BufNewFile,BufRead *.php.tmpl setf php
 
-" Remove jump to start of line for lines starting with # for php files
+" Remove jump to start of line for lines starting with # for php template files
 autocmd BufRead *.php.tmpl inoremap # X#
-
-" Automatically open a NERDTree if Vim is open with no argument
-autocmd vimenter * if !argc() | NERDTree | endif
 
 " Automatically remove trailing whitespace on buffer close
 autocmd BufLeave *.php :%s/\s\+$//e
