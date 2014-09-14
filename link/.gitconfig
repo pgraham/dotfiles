@@ -13,6 +13,7 @@
 	ds = diff --staged
 	log-stat = log --stat
 	st = status
+	ci-cs-fixes = commit -am '"[minor] CS Fixes"'
 
 [push]
 	default = simple
