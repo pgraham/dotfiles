@@ -1,0 +1,22 @@
+[color]
+	ui = true
+
+[core]
+	editor = vim
+	excludesfile = /home/pgraham/.gitignore-global
+
+[alias]
+	ap = add --patch
+	ci = commit -m
+	cia = commit -am
+	d  = diff
+	ds = diff --staged
+	log-stat = log --stat
+	st = status
+	ci-cs-fixes = commit -am '"[minor] CS Fixes"'
+
+[push]
+	default = simple
+
+[include]
+	path = .gitconfig-user
