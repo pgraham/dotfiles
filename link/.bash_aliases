@@ -6,3 +6,5 @@ alias hgdiff='hg diff -bBw --color=always'
 alias hgqdiff='hg qdiff -bBw --color=always'
 
 alias cd~='cd ~'
+
+alias ...=cdup
