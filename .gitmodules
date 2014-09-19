@@ -58,3 +58,9 @@
 [submodule "link/.vim/bundle/php-indent.vim"]
 	path = link/.vim/bundle/php-indent.vim
 	url = https://github.com/2072/PHP-Indenting-for-VIm.git
+[submodule "link/.vim/bundle/vim-css3-syntax"]
+	path = link/.vim/bundle/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule "link/.vim/bundle/vim-css-color"]
+	path = link/.vim/bundle/vim-css-color
+	url = https://github.com/skammer/vim-css-color.git
