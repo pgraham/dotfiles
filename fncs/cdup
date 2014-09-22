@@ -39,6 +39,13 @@ function cdup {
   dir="$1"
   old=`pwd`
 
+  if [[ $dir =~ ^-?[0-9]+$  ]]; then
+    for (( c=0; c<=$dir; c++ )); do
+      cd ..
+    done
+    return 0
+  fi
+
   # Try matching the full segment in path name
   new=`perl -pe "s{(.*/\Q$dir\E)(?=/|$).*?$}{\1};" <<< $old`
 
