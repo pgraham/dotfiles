@@ -54,6 +54,11 @@ function link_bin() {
   local files=(~/.dotfiles/bin/*)
 
   log_info "Linking /bin files"
+
+  if [ ! -d "~/bin" ]; then
+    mkdir ~/bin
+  fi
+
   for file in "${files[@]}"; do
 
     if [[ $file = *.un~ ]]; then
