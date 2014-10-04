@@ -25,6 +25,7 @@ function link_files() {
   local base dest
   local files=(~/.dotfiles/link/*)
 
+  log_info "Linking files in link/"
   for file in "${files[@]}"; do
 
     if [[ $file = *.un~ ]]; then
