@@ -82,6 +82,12 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Function definitions.
+if [ -d ~/.dotfiles/fncs ]; then
+    fncs=~/.dotfiles/fncs/*
+    for f in $fncs; do . "$f"; done
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
