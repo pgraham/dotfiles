@@ -15,6 +15,7 @@
 	st = status
 	ci-cs-fixes = commit -m '"[minor] CS Fixes"'
 	cia-cs-fixes = commit -am '"[minor] CS Fixes"'
+	unst = reset HEAD
 
 [push]
 	default = simple
