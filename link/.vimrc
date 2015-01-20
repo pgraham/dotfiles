@@ -162,7 +162,7 @@ nnoremap <leader>al :SidewaysLeft<cr>
 nnoremap <leader>ar :SidewaysRight<cr>
 
 " Insert blank line without entering insert mode.  Stay on current line
-nnoremap <cr> o<esc>
+nnoremap <cr> o<esc>:w<cr>
 
 " Insert linebreak under cursor without entering insert mode
 nnoremap <leader>nl i<cr><esc>l
