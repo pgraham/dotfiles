@@ -40,6 +40,11 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+function SetNoIndent()
+  setl noai nocin nosi inde=
+endfunction
+com NoIndent call SetNoIndent()
+
 " Indent case: and default: statements inside switch statements
 :let g:PHP_vintage_case_default_indent = 1
 
