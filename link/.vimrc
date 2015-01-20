@@ -158,8 +158,8 @@ nnoremap : ;
 vnoremap : ;
 
 " Map sideways.vim commands to key patterns
-nnoremap <leader>sh :SidewaysLeft<cr>
-nnoremap <leader>sl :SidewaysRight<cr>
+nnoremap <leader>al :SidewaysLeft<cr>
+nnoremap <leader>ar :SidewaysRight<cr>
 
 " Insert blank line without entering insert mode.  Stay on current line
 nnoremap <cr> o<esc>
