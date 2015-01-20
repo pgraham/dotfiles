@@ -48,6 +48,14 @@ com NoIndent call SetNoIndent()
 " Indent case: and default: statements inside switch statements
 :let g:PHP_vintage_case_default_indent = 1
 
+" Auto complete brackets and quotes
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+let delimitMate_jump_expansion = 1
+
+" Syntastic settings
+let g:syntastic_javascript_checkers = ['jsxhint']
+
 function SetTabs(width)
   let &shiftwidth=a:width
   let &tabstop=a:width
@@ -148,11 +156,6 @@ nnoremap ; :
 vnoremap ; :
 nnoremap : ;
 vnoremap : ;
-
-" Auto complete brackets and quotes
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-let delimitMate_jump_expansion = 1
 
 " Map sideways.vim commands to key patterns
 nnoremap <leader>sh :SidewaysLeft<cr>
