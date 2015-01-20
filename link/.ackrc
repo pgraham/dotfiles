@@ -1,3 +1,4 @@
 --type-set=css=.css,.less
 --type-set=json=.json
+--type-set=js=.js,.jsx
 --type-set=jsx=.jsx
