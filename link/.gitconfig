@@ -15,6 +15,8 @@
 	st = status
 	ci-cs-fixes = commit -m '"[minor] CS Fixes"'
 	cia-cs-fixes = commit -am '"[minor] CS Fixes"'
+	ci-ws-fixes = commit -m '"[minor] whitespace fixes"'
+	cia-ws-fixes = commit -am '"[minor] whitespace fixes"'
 	unst = reset HEAD
 
 [push]
