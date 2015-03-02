@@ -125,7 +125,7 @@ nnoremap <leader>q gqip
 "  -  ZO  -->  Quit others
 "
 nnoremap ZA :wqa<cr>
-nnoremap ZO :only<cr>
+nnoremap ZO :tabo<cr>
 
 " Use <tab> to jump between matching delimiters
 nnoremap <tab> %
