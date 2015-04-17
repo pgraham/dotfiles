@@ -6,18 +6,30 @@
 	excludesfile = /home/pgraham/.gitignore-global
 
 [alias]
-	ap = add --patch
-	ci = commit -m
-	cia = commit -am
 	d  = diff
 	ds = diff --staged
-	log-stat = log --stat
 	st = status
+
+  # Index manipulation
+	ap = add --patch
+	unst = reset HEAD
+	co = checkout --
+
+  # Commit shortcuts
+	ci = commit -m
+	cia = commit -am
 	ci-cs-fixes = commit -m '"[minor] CS Fixes"'
 	cia-cs-fixes = commit -am '"[minor] CS Fixes"'
 	ci-ws-fixes = commit -m '"[minor] whitespace fixes"'
 	cia-ws-fixes = commit -am '"[minor] whitespace fixes"'
-	unst = reset HEAD
+
+	# Stash shortcuts
+	spop = stash pop
+	sshow = stash show
+	slist = stash list
+
+	# Log shortcuts
+	log-stat = log --stat
 
 [push]
 	default = simple
