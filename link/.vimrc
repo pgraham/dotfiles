@@ -143,6 +143,9 @@ nnoremap gk k
 nnoremap g$ $
 nnoremap g0 0
 
+" Select pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>
 nnoremap <F1> <esc>
