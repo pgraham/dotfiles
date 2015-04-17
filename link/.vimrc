@@ -154,8 +154,8 @@ vnoremap <F1> <esc>
 " Quickly exit insert mode
 inoremap jj <esc>:w<cr>
 
-" Map semicolon to colon to avoid extra <shift> press to entre cmdline mode.
-" Originally semicolon functionality is pressed by mapping to colon
+" Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
+" Original semicolon functionality is preserved by mapping to colon
 nnoremap ; :
 vnoremap ; :
 nnoremap : ;
