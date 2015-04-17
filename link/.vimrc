@@ -102,6 +102,7 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//c<left><left>
 
 " Text width & wrapping. Defaults to wrapping after 80 characters.
 "
