@@ -1,2 +1,2 @@
 #!/bin/sh
-nohup chromium-browser --disable-web-security --user-data-dir=/home/pgraham/.chromium-cordova &
+nohup chromium-browser --disable-web-security --user-data-dir=/home/pgraham/.chromium-cordova --touch-devices=123 &
