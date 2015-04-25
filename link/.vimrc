@@ -102,6 +102,7 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//c<left><left>
 
 " Text width & wrapping. Defaults to wrapping after 80 characters.
 "
@@ -142,6 +143,9 @@ nnoremap gk k
 nnoremap g$ $
 nnoremap g0 0
 
+" Select pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>
 nnoremap <F1> <esc>
@@ -150,8 +154,8 @@ vnoremap <F1> <esc>
 " Quickly exit insert mode
 inoremap jj <esc>:w<cr>
 
-" Map semicolon to colon to avoid extra <shift> press to entre cmdline mode.
-" Originally semicolon functionality is pressed by mapping to colon
+" Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
+" Original semicolon functionality is preserved by mapping to colon
 nnoremap ; :
 vnoremap ; :
 nnoremap : ;
