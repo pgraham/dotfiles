@@ -40,7 +40,7 @@ function cdup {
   old=`pwd`
 
   if [[ $dir =~ ^-?[0-9]+$  ]]; then
-    for (( c=0; c<=$dir; c++ )); do
+    for (( c=0; c<$dir; c++ )); do
       cd ..
     done
     return 0

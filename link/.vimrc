@@ -40,8 +40,21 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+function SetNoIndent()
+  setl noai nocin nosi inde=
+endfunction
+com NoIndent call SetNoIndent()
+
 " Indent case: and default: statements inside switch statements
 :let g:PHP_vintage_case_default_indent = 1
+
+" Auto complete brackets and quotes
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+let delimitMate_jump_expansion = 1
+
+" Syntastic settings
+let g:syntastic_javascript_checkers = ['jsxhint']
 
 function SetTabs(width)
   let &shiftwidth=a:width
@@ -89,6 +102,7 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//c<left><left>
 
 " Text width & wrapping. Defaults to wrapping after 80 characters.
 "
@@ -112,7 +126,7 @@ nnoremap <leader>q gqip
 "  -  ZO  -->  Quit others
 "
 nnoremap ZA :wqa<cr>
-nnoremap ZO :only<cr>
+nnoremap ZO :tabo<cr>
 
 " Use <tab> to jump between matching delimiters
 nnoremap <tab> %
@@ -129,6 +143,9 @@ nnoremap gk k
 nnoremap g$ $
 nnoremap g0 0
 
+" Select pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>
 nnoremap <F1> <esc>
@@ -137,24 +154,19 @@ vnoremap <F1> <esc>
 " Quickly exit insert mode
 inoremap jj <esc>:w<cr>
 
-" Map semicolon to colon to avoid extra <shift> press to entre cmdline mode.
-" Originally semicolon functionality is pressed by mapping to colon
+" Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
+" Original semicolon functionality is preserved by mapping to colon
 nnoremap ; :
 vnoremap ; :
 nnoremap : ;
 vnoremap : ;
 
-" Auto complete brackets and quotes
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-let delimitMate_jump_expansion = 1
-
 " Map sideways.vim commands to key patterns
-nnoremap <leader>sh :SidewaysLeft<cr>
-nnoremap <leader>sl :SidewaysRight<cr>
+nnoremap <leader>al :SidewaysLeft<cr>
+nnoremap <leader>ar :SidewaysRight<cr>
 
 " Insert blank line without entering insert mode.  Stay on current line
-nnoremap <cr> o<esc>
+nnoremap <cr> o<esc>:w<cr>
 
 " Insert linebreak under cursor without entering insert mode
 nnoremap <leader>nl i<cr><esc>l
