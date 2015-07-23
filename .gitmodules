@@ -76,3 +76,6 @@
 [submodule "link/.vim/bundle/camelcasemotion"]
 	path = link/.vim/bundle/camelcasemotion
 	url = https://github.com/bkad/CamelCaseMotion.git
+[submodule "link/.vim/bundle/vim-gradle"]
+	path = link/.vim/bundle/vim-gradle
+	url = https://github.com/tfnico/vim-gradle
