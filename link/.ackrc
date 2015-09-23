@@ -2,3 +2,5 @@
 --type-set=json=.json
 --type-set=js=.js,.jsx
 --type-set=jsx=.jsx
+--type-set=properties=.properties
+--type-set=gradle=.gradle
