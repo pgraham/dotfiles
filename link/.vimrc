@@ -3,6 +3,7 @@ syntax on
 filetype plugin indent on
 set nocompatible
 set modelines=0
+set backspace=indent,eol,start
 
 let mapleader = ","
 
