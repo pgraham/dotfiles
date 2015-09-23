@@ -79,11 +79,11 @@ endif
 " Tab navigation.
 "
 " Mappings>
-"  -  <shift>h  -->  Previous tab
-"  -  <shift>l  -->  Next tab
+"  -  <leader>h  -->  Previous tab
+"  -  <leader>l  -->  Next tab
 "
-nnoremap <S-h> gT
-nnoremap <S-l> gt
+nnoremap <leader>h gT
+nnoremap <leader>l gt
 ca tn tabnew
 
 " Search config. Search results are automatically highlighted. Searches use
