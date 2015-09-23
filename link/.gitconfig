@@ -13,6 +13,7 @@
   # Index manipulation
 	ap = add --patch
 	unst = reset HEAD
+	unstp = reset --patch HEAD
 	co = checkout --
 
   # Commit shortcuts
