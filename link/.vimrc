@@ -3,6 +3,7 @@ syntax on
 filetype plugin indent on
 set nocompatible
 set modelines=0
+set backspace=indent,eol,start
 
 let mapleader = ","
 
@@ -100,6 +101,8 @@ set incsearch
 set hlsearch
 nnoremap / /\v
 vnoremap / /\v
+nnoremap <leader>f /\v<C-r><C-w><cr>
+nnoremap <leader>F :Ack --&ft <C-r><C-w>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//c<left><left>
