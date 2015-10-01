@@ -79,3 +79,6 @@
 [submodule "link/.vim/bundle/vim-gradle"]
 	path = link/.vim/bundle/vim-gradle
 	url = https://github.com/tfnico/vim-gradle
+[submodule "link/.vim/bundle/vim-angry"]
+	path = link/.vim/bundle/vim-angry
+	url = https://github.com/b4winckler/vim-angry.git
