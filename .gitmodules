@@ -85,3 +85,6 @@
 [submodule "link/.vim/bundle/vim-textobj-xmlattr"]
 	path = link/.vim/bundle/vim-textobj-xmlattr
 	url = https://github.com/whatyouhide/vim-textobj-xmlattr.git
+[submodule "link/.vim/bundle/vim-angry"]
+	path = link/.vim/bundle/vim-angry
+	url = https://github.com/b4winckler/vim-angry.git
