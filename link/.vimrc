@@ -15,6 +15,9 @@ colorscheme twilight256
 " Don't clutter directory tree with undo files
 set undodir=~/.vim/undo
 
+" Don't use a swapfile, interfering with watchify
+set noswapfile
+
 " Status line config
 if (has('statusline'))
   set laststatus=2
