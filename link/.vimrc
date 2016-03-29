@@ -180,6 +180,10 @@ nnoremap <leader>nl i<cr><esc>l
 " Map C-n to open NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+" vim-templates setup
+let g:templates_directory = '~/.dotfiles/vim-templates'
+let g:templates_no_builtin_templates = 1
+
 " Automatically open a NERDTree if Vim is open with no argument
 autocmd vimenter * if !argc() | NERDTree | endif
 
