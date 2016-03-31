@@ -10,13 +10,13 @@
 	ds = diff --staged
 	st = status
 
-  # Index manipulation
+# Index manipulation
 	ap = add --patch
 	un = reset HEAD
 	unp = reset --patch HEAD
 	co = checkout --
 
-  # Commit shortcuts
+# Commit shortcuts
 	ci = commit -m
 	cia = commit -am
 	ci-cs-fixes = commit -m '"[minor] CS Fixes"'
@@ -24,12 +24,15 @@
 	ci-ws-fixes = commit -m '"[minor] whitespace fixes"'
 	cia-ws-fixes = commit -am '"[minor] whitespace fixes"'
 
-	# Stash shortcuts
+# History manipulation
+	backout = reset --soft HEAD~
+
+# Stash shortcuts
 	spop = stash pop
 	sshow = stash show
 	slist = stash list
 
-	# Log shortcuts
+# Log shortcuts
 	log-stat = log --stat
 
 [push]

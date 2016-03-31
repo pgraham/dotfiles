@@ -81,6 +81,15 @@ if [ "$(uname)" == "Darwin" ]; then
     alias ls='ls -G'
 fi
 
+# set PATH so it includes user's private local if it exists
+if [ -d "$HOME/local/bin" ] ; then
+    PATH="$HOME/local/bin:$PATH"
+fi
+
+if [ -d "$HOME/bin" ]; then
+  PATH="$HOME/bin:$PATH"
+fi
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
