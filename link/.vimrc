@@ -6,6 +6,11 @@ set modelines=0
 set backspace=indent,eol,start
 
 let mapleader = ","
+let maplocalleader = "\\"
+
+" (E)dit (V)imrc & (S)ource (V)imrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Colour config
 set t_Co=256
@@ -44,10 +49,10 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-function SetNoIndent()
+function! SetNoIndent()
   setl noai nocin nosi inde=
 endfunction
-com NoIndent call SetNoIndent()
+com! NoIndent call SetNoIndent()
 
 " Indent case: and default: statements inside switch statements
 :let g:PHP_vintage_case_default_indent = 1
@@ -60,12 +65,12 @@ let delimitMate_jump_expansion = 1
 " Syntastic settings
 let g:syntastic_javascript_checkers = ['jsxhint']
 
-function SetTabs(width)
+function! SetTabs(width)
   let &shiftwidth=a:width
   let &tabstop=a:width
   set noexpandtab
 endfunction
-com -nargs=* Tabs call SetTabs(<f-args>)
+com! -nargs=* Tabs call SetTabs(<f-args>)
 
 " Show whitespace characters
 set list
@@ -95,7 +100,12 @@ ca tn tabnew
 "
 " Mappings>
 "  -  ,<space>  -->  Un-highlight search matches
+"  -  ,f        -->  Search for word under the cursor
+"  -  ,F        -->  Ack search for the word under the cursor in files of the
+"                    same type
 "  -  ,m        -->  Start a replace match, same as :%s/
+"  -  ,s        -->  Search/replace for word under the cursor, replace text
+"                    needs to be entered
 "
 set ignorecase
 set smartcase
@@ -123,7 +133,18 @@ if exists('&colorcolumn')
   set colorcolumn=81
 endif
 
-command Nowrap set textwidth=0
+" Rename file for current buffer in file system. NOTE: fs op, not git
+function! MoveFile(newspec)
+  let old = expand('%')
+  if (old == a:newspec)
+    return 0
+  endif
+  exe 'sav' fnameescape(a:newspec)
+  call delete(old)
+endfunction
+command! -nargs=1 -complete=file -bar MoveFile call MoveFile('<args>')
+
+command! Nowrap setlocal textwidth=0
 nnoremap <leader>q gqip
 
 " A couple of mappings to complement ZZ and ZQ
@@ -158,7 +179,7 @@ nnoremap <F1> <esc>
 vnoremap <F1> <esc>
 
 " Quickly exit insert mode
-inoremap jj <esc>:w<cr>
+inoremap jk <esc>:w<cr>
 
 " Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
 " Original semicolon functionality is preserved by mapping to colon
@@ -180,8 +201,26 @@ nnoremap <leader>nl i<cr><esc>l
 " Map C-n to open NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+" Abbreviations
+" -----------------------------
+
+function! Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunction
+
+iabbrev @@ philip.robert.graham@gmail.com
+
+iabbrev adn and
+iabbrev waht what
+iabbrev tehn then
+iabbrev teh the
+
+autocmd FileType javascript :iabbrev <buffer> fnc function
+autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr><c-r>=Eatchar('\m\s\<bar>/')<cr>
+
 " vim-templates setup
-let g:templates_directory = '~/.dotfiles/vim-templates'
+let g:templates_directory = "~/.dotfiles/vim-templates"
 let g:templates_no_builtin_templates = 1
 
 " Automatically open a NERDTree if Vim is open with no argument
