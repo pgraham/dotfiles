@@ -174,6 +174,9 @@ nnoremap <cr> o<esc>:w<cr>
 " Insert linebreak under cursor without entering insert mode
 nnoremap <leader>nl i<cr><esc>l
 
+" Insert space under cursor without entering insert mode
+nnoremap <leader>sp i<space><esc>
+
 " Map C-n to open NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 
