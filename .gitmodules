@@ -72,7 +72,7 @@
 	url = https://github.com/mxw/vim-jsx.git
 [submodule "link/.vim/bundle/vim-template.git"]
 	path = link/.vim/bundle/vim-template.git
-	url = https://github.com/aperezdc/vim-template.git
+	url = git@github.com:pgraham/vim-template.git
 [submodule "link/.vim/bundle/camelcasemotion"]
 	path = link/.vim/bundle/camelcasemotion
 	url = https://github.com/bkad/CamelCaseMotion.git
