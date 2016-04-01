@@ -220,8 +220,10 @@ iabbrev tehn then
 iabbrev teh the
 
 autocmd FileType javascript :iabbrev <buffer> fnc function
-autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr><c-r>=Eatchar('\m\s\<bar>/')<cr>
+autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr>});<c-r>=Eatchar('\m\s\<bar>/')<cr>
 
+" Autocommands
+" ---------------------------------
 " vim-templates setup
 let g:templates_directory = "~/.dotfiles/vim-templates"
 let g:templates_no_builtin_templates = 1
