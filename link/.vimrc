@@ -7,6 +7,7 @@ set backspace=indent,eol,start
 
 let mapleader = ","
 let maplocalleader = "\\"
+nnoremap <leader>w :w<cr>
 
 " (E)dit (V)imrc & (S)ource (V)imrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -63,7 +64,8 @@ let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 
 " Syntastic settings
-let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_less_use_less_lint = 1
 
 function! SetTabs(width)
   let &shiftwidth=a:width
@@ -114,6 +116,7 @@ set incsearch
 set hlsearch
 nnoremap / /\v
 vnoremap / /\v
+nnoremap <leader>, /
 nnoremap <leader>f /\v<C-r><C-w><cr>
 nnoremap <leader>F :Ack --&ft <C-r><C-w>
 nnoremap <leader><space> :noh<cr>
@@ -180,6 +183,7 @@ vnoremap <F1> <esc>
 
 " Quickly exit insert mode
 inoremap jk <esc>:w<cr>
+inoremap kj <esc>:w<cr>
 
 " Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
 " Original semicolon functionality is preserved by mapping to colon
@@ -220,6 +224,7 @@ iabbrev tehn then
 iabbrev teh the
 
 autocmd FileType javascript :iabbrev <buffer> fnc function
+autocmd FileType javascript :iabbrev <buffer> afnc function (
 autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr>});<c-r>=Eatchar('\m\s\<bar>/')<cr>
 autocmd FileType javascript :iabbrev <buffer> rjscls <esc>;TemplateHere react-class.jsx<cr>bcr-o
 
