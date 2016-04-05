@@ -31,6 +31,7 @@
 	spop = stash pop
 	sshow = stash show
 	slist = stash list
+	sdrop = stash drop
 
 # Log shortcuts
 	log-stat = log --stat
