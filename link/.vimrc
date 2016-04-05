@@ -123,6 +123,9 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>m :%s/
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//c<left><left>
 
+" Search for Git conflicts
+nnoremap <leader>conf /\v\<\<\<<cr>
+
 " Text width & wrapping. Defaults to wrapping after 80 characters.
 "
 " Mappings>
@@ -173,6 +176,9 @@ nnoremap gk k
 nnoremap g$ $
 nnoremap g0 0
 
+" Install camelcasemotion mappings
+call camelcasemotion#CreateMotionMappings('<leader>')
+
 " Select pasted text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
@@ -199,11 +205,19 @@ nnoremap <leader>ar :SidewaysRight<cr>
 " Insert blank line without entering insert mode.  Stay on current line
 nnoremap <cr> o<esc>:w<cr>
 
-" Insert linebreak under cursor without entering insert mode
+" Insert line break cursor without entering insert mode
+"
+"    <leader>nl    Insert line break under cursor
+"    <leader>Nl    Insert line break after cursor
 nnoremap <leader>nl i<cr><esc>l
+nnoremap <leader>Nl a<cr><esc>l
 
-" Insert space under cursor without entering insert mode
+" Insert space without entering insert mode
+"
+"    <leader>sp    Insert space under cursor
+"    <leader>Sp    Insert space after cursro
 nnoremap <leader>sp i<space><esc>
+nnoremap <leader>Sp a<space><esc>
 
 " Map C-n to open NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
