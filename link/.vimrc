@@ -7,7 +7,8 @@ set backspace=indent,eol,start
 
 let mapleader = ","
 let maplocalleader = "\\"
-nnoremap <leader>w :w<cr>
+nnoremap <leader>W :w<cr>
+nnoremap <leader>zz ZZ
 
 " (E)dit (V)imrc & (S)ource (V)imrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -176,11 +177,21 @@ nnoremap gk k
 nnoremap g$ $
 nnoremap g0 0
 
+" Easier keys for quickly moving up and down files
+nnoremap J <c-d>
+nnoremap K <c-u>
+nnoremap <leader>J J
+nnoremap <leader>K K
+
 " Install camelcasemotion mappings
 call camelcasemotion#CreateMotionMappings('<leader>')
 
 " Select pasted text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Replace current line with buffer - line-wise op
+" After op, replaced line will be in buffer
+nnoremap <leader>rp pkdd 
 
 " Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>
@@ -189,7 +200,6 @@ vnoremap <F1> <esc>
 
 " Quickly exit insert mode
 inoremap jk <esc>:w<cr>
-inoremap kj <esc>:w<cr>
 
 " Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
 " Original semicolon functionality is preserved by mapping to colon
@@ -197,6 +207,8 @@ nnoremap ; :
 vnoremap ; :
 nnoremap : ;
 vnoremap : ;
+
+nnoremap <leader>cmd :
 
 " Map sideways.vim commands to key patterns
 nnoremap <leader>al :SidewaysLeft<cr>
@@ -221,6 +233,10 @@ nnoremap <leader>Sp a<space><esc>
 
 " Map C-n to open NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Map some fugitive commands
+nnoremap <leader>gst :Gstatus<cr>
+nnoremap <leader>gco :Gcommit<cr>
 
 " Abbreviations
 " -----------------------------
