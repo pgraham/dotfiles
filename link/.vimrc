@@ -238,6 +238,12 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>gst :Gstatus<cr>
 nnoremap <leader>gco :Gcommit<cr>
 
+function! ExecuteNpmTest()
+  !npm test
+endfunction
+command! NpmTest call ExecuteNpmTest()
+
+
 " Abbreviations
 " -----------------------------
 
