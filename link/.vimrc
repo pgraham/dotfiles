@@ -264,6 +264,8 @@ autocmd FileType javascript :iabbrev <buffer> afnc function (
 autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr>});<c-r>=Eatchar('\m\s\<bar>/')<cr>
 autocmd FileType javascript :iabbrev <buffer> rjscls <esc>;TemplateHere react-class.jsx<cr>bcr-o
 
+cabbrev trim %s/\s\+$//e
+
 " Autocommands
 " ---------------------------------
 " vim-templates setup
