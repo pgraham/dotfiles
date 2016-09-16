@@ -28,10 +28,11 @@
 	backout = reset --soft HEAD~
 
 # Stash shortcuts
+	sp = stash pop
 	spop = stash pop
-	sshow = stash show
-	slist = stash list
-	sdrop = stash drop
+	ss = stash show -p
+	sl = stash list
+	sd = stash drop
 
 # Log shortcuts
 	log-stat = log --stat
