@@ -36,8 +36,16 @@ function cdup {
     return 0
   fi
 
-  dir="$1"
-  old=`pwd`
+  local target="$1"
+  local old=`pwd`
+
+  #IFS='/' read -r -a parts <<< "$target"
+  local parts=( ${target//\// } )
+
+  local dir=${parts[0]}
+  if [ ${#parts[@]} -gt 1 ]; then
+    local sibling=("${parts[@]:1}")
+  fi
 
   if [[ $dir =~ ^-?[0-9]+$  ]]; then
     for (( c=0; c<$dir; c++ )); do
@@ -47,12 +55,12 @@ function cdup {
   fi
 
   # Try matching the full segment in path name
-  new=`perl -pe "s{(.*/\Q$dir\E)(?=/|$).*?$}{\1};" <<< $old`
+  local new=`perl -pe "s{(.*/\Q$dir\E)(?=/|$).*?$}{\1};" <<< $old`
 
   # If failed, try partial match of segment
   if [ "$old" == "$new" ]; then
-    oldup=`dirname $old`
-    new=`perl -pe "s{(.*/[^/]*?\Q$dir\E[^/]*?)(?=/|$).*?$}{\1}" <<< $oldup`
+    old=`dirname $old`
+    new=`perl -pe "s{(.*/[^/]*?\Q$dir\E[^/]*?)(?=/|$).*?$}{\1}" <<< $old`
   fi
 
   # No replacements done, so we failed
@@ -62,4 +70,9 @@ function cdup {
   fi
 
   cd $new
+
+  if [ ! -z "$sibling" ]; then
+    local sib_path=$(IFS=/; echo "${sibling[*]}")
+    cd "$sib_path"
+  fi
 }
