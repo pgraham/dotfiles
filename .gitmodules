@@ -97,3 +97,6 @@
 [submodule "link/.vim/bundle/vim-snipmate.git"]
 	path = link/.vim/bundle/vim-snipmate.git
 	url = https://github.com/garbas/vim-snipmate.git
+[submodule "link/.vim/bundle/vim-unimpaired"]
+	path = link/.vim/bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git

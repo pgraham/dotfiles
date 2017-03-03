@@ -42,3 +42,6 @@
 
 [include]
 	path = .gitconfig-user
+
+[diff]
+	wsErrorHighlight = all
