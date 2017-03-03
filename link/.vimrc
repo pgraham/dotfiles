@@ -20,6 +20,7 @@ set background=dark
 colorscheme twilight256
 
 " Don't clutter directory tree with undo files
+set undofile
 set undodir=~/.vim/undo
 
 " Don't use a swapfile, interfering with watchify
@@ -65,7 +66,7 @@ let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 
 " Syntastic settings
-"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_less_use_less_lint = 1
 
 function! SetTabs(width)
@@ -73,7 +74,7 @@ function! SetTabs(width)
   let &tabstop=a:width
   set noexpandtab
 endfunction
-com! -nargs=* Tabs call SetTabs(<f-args>)
+com! -bar -nargs=* Tabs call SetTabs(<f-args>)
 
 " Show whitespace characters
 set list
@@ -265,7 +266,36 @@ autocmd FileType javascript :iabbrev <buffer> nfnc function ()
 autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr>});<c-r>=Eatchar('\m\s\<bar>/')<cr>
 autocmd FileType javascript :iabbrev <buffer> rjscls <esc>;TemplateHere react-class.jsx<cr>bcr-o
 
-cabbrev trim %s/\s\+$//e
+" White space fix commands
+com! -bar Trim %s/\s\+$//e
+com! -bar Retab %retab!
+com! -bar FixWhiteSp Trim <bar> Tabs 4 <bar> Retab
+
+" General syntax fixes
+com! -bar SpAftComma %s/,\(\S\)/, \1/ce
+
+" Css code style fix commands
+com! -bar SpAftColon %s/:\(\S.\+;\)/: \1/ce
+com! -bar SpB4DecBlk %s/\(\w\){/\1 {/ce
+
+com! Cssfix FixWhiteSp <bar> SpAftComma <bar> SpAftColon <bar> SpB4DecBlk
+
+" Javascript code style fix commands
+com! -bar SpAftCtrl %s/\(function\|if\|for\|switch\)(/\1 (/ce
+com! -bar SpB4Blk %s/){/) {/ce
+com! -bar SpB4Else %s/}else/} else/ce
+com! -bar SpAftElse %s/else{/else {/ce
+com! -bar SpAroundElse SpB4Else <bar> SpAftElse
+com! -bar SpAftPropName %s/:\(\S\)/: \1/ce
+com! -bar SpB4Obj %s/{\(\S\)/{ \1/ce
+com! -bar SpAftObj %s/\(\S\)}/\1 }/ce
+com! -bar SpAroundObj SpB4Obj <bar> SpAftObj
+com! -bar SpB4Ar %s/\[\(\S\)/[ \1/ce
+com! -bar SpAftAr %s/\(\S\)]/\1 ]/ce
+com! -bar SpAroundAr SpB4Ar <bar> SpAftAr
+
+com! Jsfix FixWhiteSp <bar> SpAftCtrl <bar> SpB4Blk <bar> SpAroundElse <bar> SpAftComma <bar> SpAftPropName <bar> SpAroundObj <bar> SpAroundAr <bar> noh
+
 
 " Autocommands
 " ---------------------------------
