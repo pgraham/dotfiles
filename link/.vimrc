@@ -312,6 +312,8 @@ au FocusLost * :wa
 " Apply psql syntax highlighting to pgsql files
 au BufNewFile,BufRead *.pgsql setf psql
 
+" Apply markdown highlighting for *.md files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Apply php syntax highlighting to php.tmpl files
 au BufNewFile,BufRead *.php.tmpl setf php
 
