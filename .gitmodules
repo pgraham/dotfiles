@@ -100,3 +100,6 @@
 [submodule "link/.vim/bundle/vim-unimpaired"]
 	path = link/.vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "link/.vim/bundle/vim-textobj-line"]
+	path = link/.vim/bundle/vim-textobj-line
+	url = https://github.com/kana/vim-textobj-line.git
