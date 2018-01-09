@@ -106,3 +106,6 @@
 [submodule "link/.vim/bundle/typescript-vim.git"]
 	path = link/.vim/bundle/typescript-vim.git
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "link/.vim/bundle/spacegray.vim"]
+	path = link/.vim/bundle/spacegray.vim
+	url = https://github.com/ajh17/Spacegray.vim.git
