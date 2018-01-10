@@ -1,14 +1,9 @@
 call pathogen#infect()
-syntax on
-filetype plugin indent on
-set nocompatible
 set modelines=0
-set backspace=indent,eol,start
 
 let mapleader = ","
 let maplocalleader = "\\"
 nnoremap <leader>W :w<cr>
-nnoremap <leader>zz ZZ
 
 " (E)dit (V)imrc & (S)ource (V)imrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -56,6 +51,7 @@ endif
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set cino==0
 
 function! SetNoIndent()
   setl noai nocin nosi inde=
@@ -71,7 +67,7 @@ let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 
 " Syntastic settings
-let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_less_use_less_lint = 1
 
 function! SetTabs(width)
@@ -119,7 +115,6 @@ ca tn tabnew
 set ignorecase
 set smartcase
 set gdefault
-set incsearch
 set hlsearch
 nnoremap / /\v
 vnoremap / /\v
@@ -131,7 +126,7 @@ nnoremap <leader>m :%s/
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//c<left><left>
 
 " Search for Git conflicts
-nnoremap <leader>conf /\v\<\<\<<cr>
+nnoremap <leader>cf /\v\<\<\<<cr>
 
 " Text width & wrapping. Defaults to wrapping after 80 characters.
 "
@@ -214,8 +209,6 @@ vnoremap ; :
 nnoremap : ;
 vnoremap : ;
 
-nnoremap <leader>cmd :
-
 " Map sideways.vim commands to key patterns
 nnoremap <leader>al :SidewaysLeft<cr>
 nnoremap <leader>ar :SidewaysRight<cr>
@@ -223,7 +216,7 @@ nnoremap <leader>ar :SidewaysRight<cr>
 " Insert blank line without entering insert mode.  Stay on current line
 nnoremap <cr> o<esc>:w<cr>
 
-" Insert line break cursor without entering insert mode
+" Insert line break without entering insert mode
 "
 "    <leader>nl    Insert line break under cursor
 "    <leader>Nl    Insert line break after cursor
