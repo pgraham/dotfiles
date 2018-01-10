@@ -17,7 +17,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Colour config
 set t_Co=256
 set background=dark
-colorscheme twilight256
+let g:spacegray_underline_search = 1
+let g:spacegray_use_italics = 1
+colorscheme spacegray
+if (has('termguicolors'))
+  set termguicolors
+endif
 
 " Don't clutter directory tree with undo files
 set undofile
@@ -78,7 +83,7 @@ com! -bar -nargs=* Tabs call SetTabs(<f-args>)
 
 " Show whitespace characters
 set list
-set listchars=tab:→\ ,eol:¬
+set listchars=tab:→\ ,eol:¬,trail:∙
 
 " Display misc.
 set scrolloff=3

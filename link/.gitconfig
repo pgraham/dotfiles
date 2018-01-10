@@ -24,6 +24,9 @@
 	ci-ws-fixes = commit -m '"[minor] whitespace fixes"'
 	cia-ws-fixes = commit -am '"[minor] whitespace fixes"'
 
+# Branching
+	br = checkout -b
+
 # History manipulation
 	backout = reset --soft HEAD~
 
