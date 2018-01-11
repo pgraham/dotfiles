@@ -34,9 +34,6 @@
 [submodule "link/.vim/bundle/nerdtree"]
 	path = link/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "link/.vim/bundle/syntastic"]
-	path = link/.vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "link/.vim/bundle/vim-repeat"]
 	path = link/.vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -109,3 +106,6 @@
 [submodule "link/.vim/bundle/spacegray.vim"]
 	path = link/.vim/bundle/spacegray.vim
 	url = https://github.com/ajh17/Spacegray.vim.git
+[submodule "link/.vim/bundle/ale"]
+	path = link/.vim/bundle/ale
+	url = https://github.com/w0rp/ale.git

@@ -35,7 +35,6 @@ if (has('statusline'))
   set statusline+=%{fugitive#statusline()}       " Git
   set statusline+=\ [%{&ff}/%Y]                  " Filetype
   set statusline+=\ %#warningmsg#
-  set statusline+=\ %{SyntasticStatuslineFlag()} " Syntastic
   set statusline+=%*
   set statusline+=%=%-14.(%l,%c%V%)\ %p%%        " Right aligned file nav info
 
@@ -65,10 +64,6 @@ com! NoIndent call SetNoIndent()
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
-
-" Syntastic settings
-"let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_less_use_less_lint = 1
 
 function! SetTabs(width)
   let &shiftwidth=a:width
