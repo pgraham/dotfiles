@@ -1,5 +1,6 @@
 call pathogen#infect()
 set modelines=0
+set backspace=indent,eol,start
 
 let mapleader = ","
 let maplocalleader = "\\"
