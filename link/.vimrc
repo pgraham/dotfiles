@@ -296,26 +296,31 @@ com! Jsfix FixWhiteSp <bar> SpAftCtrl <bar> SpB4Blk <bar> SpAroundElse <bar> SpA
 let g:templates_directory = "~/.dotfiles/vim-templates"
 let g:templates_no_builtin_templates = 1
 
-" Automatically open a NERDTree if Vim is open with no argument
-autocmd vimenter * if !argc() | NERDTree | endif
-
-" Automatically save files when focus is lost
-au FocusLost * :wa
-
-" Apply psql syntax highlighting to pgsql files
-au BufNewFile,BufRead *.pgsql setf psql
-
-" Apply markdown highlighting for *.md files
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" Apply php syntax highlighting to php.tmpl files
-au BufNewFile,BufRead *.php.tmpl setf php
-
-" Remove jump to start of line for lines starting with # for php template files
-autocmd BufRead *.php.tmpl inoremap # X#
-
-" Automatically remove trailing whitespace on buffer close
-autocmd BufLeave *.php :%s/\s\+$//e
-
 if has("autocmd")
+
+  " Automatically open a NERDTree if Vim is open with no argument
+  au vimenter * if !argc() | NERDTree | endif
+
+  " Automatically save files when focus is lost
+  au FocusLost * :wa
+
+  " Apply psql syntax highlighting to pgsql files
+  au BufNewFile,BufRead *.pgsql setf psql
+
+  " Apply markdown highlighting for *.md files
+  au BufNewFile,BufReadPost *.md set filetype=markdown
+
+  " Apply php syntax highlighting to php.tmpl files
+  au BufNewFile,BufRead *.php.tmpl setf php
+
+  " Apply JSON syntax to .babelrc files
+  au BufNewFile,BufRead .babelrc setf json
+
+  " Remove jump to start of line for lines starting with # for php template files
+  au BufRead *.php.tmpl inoremap # X#
+
+  " Automatically remove trailing whitespace on buffer close
+  au BufLeave *.php :%s/\s\+$//e
+
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
