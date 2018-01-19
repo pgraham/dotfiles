@@ -109,3 +109,6 @@
 [submodule "link/.vim/bundle/ale"]
 	path = link/.vim/bundle/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "link/.vim/bundle/vim-localvimrc"]
+	path = link/.vim/bundle/vim-localvimrc
+	url = https://github.com/embear/vim-localvimrc.git
