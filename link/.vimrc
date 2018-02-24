@@ -66,6 +66,8 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 
+let g:NERDSpaceDelims = 1
+
 function! SetTabs(width)
   let &shiftwidth=a:width
   let &tabstop=a:width

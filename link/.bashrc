@@ -117,6 +117,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Git completion
+source ~/.dotfiles/.git-prompt.sh
+
+export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[38;5;31m\]\u\[\033[0m\]@\[\033[38;5;138m\]\h\[\033[0m\]:\[\033[38;5;134m\]\w\[\033[38;5;11m\]\$(__git_ps1)\[\033[38;5;28m\]· \[\033[0m\]"
+
 # This file is part of the dotfiles repo and so contains generic instructions
 # For local commands use ~/.bash_local
 if [ -f ~/.bash_local ]; then
