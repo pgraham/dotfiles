@@ -144,7 +144,7 @@ init_config
 # If repository isn't cloned yet do it!
 if [[ ! -d ~/.dotfiles ]]; then
   log_info "Downloading dotfiles"
-  git clone --recursive git://github.com/pgraham/dotfiles.git ~/.dotfiles
+  git clone --recursive https://github.com/pgraham/dotfiles.git ~/.dotfiles
   cd ~/.dotfiles
 elif ((do_update)); then
   log_info "Updating dotfiles and pull latest submodules"
