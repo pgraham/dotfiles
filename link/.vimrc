@@ -324,6 +324,9 @@ if has("autocmd")
   " Apply JSON syntax to .babelrc files
   au BufNewFile,BufRead .babelrc setf json
 
+  " Apply Shell syntax to ~/.bash_local
+  au BufNewFile,BufRead .bash_local setf sh
+
   " Remove jump to start of line for lines starting with # for php template files
   au BufRead *.php.tmpl inoremap # X#
 
