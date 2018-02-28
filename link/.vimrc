@@ -292,13 +292,18 @@ com! -bar SpAroundAr SpB4Ar <bar> SpAftAr
 
 com! Jsfix FixWhiteSp <bar> SpAftCtrl <bar> SpB4Blk <bar> SpAroundElse <bar> SpAftComma <bar> SpAftPropName <bar> SpAroundObj <bar> SpAroundAr <bar> noh
 
+" local-vimrc setup
+let g:localvimrc_persistent = 2
 
-" Autocommands
-" ---------------------------------
 " vim-templates setup
 let g:templates_directory = "~/.dotfiles/vim-templates"
 let g:templates_no_builtin_templates = 1
 
+" ale setup
+let g:ale_sign_column_always = 1
+
+" Autocommands
+" ---------------------------------
 if has("autocmd")
 
   " Automatically open a NERDTree if Vim is open with no argument
