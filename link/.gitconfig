@@ -6,7 +6,7 @@
 	excludesfile = /home/pgraham/.gitignore-global
 
 [alias]
-	d  = diff
+	d  = diff -- ':(exclude)package-lock.json'
 	ds = diff --staged
 	st = status
 
@@ -48,3 +48,6 @@
 
 [diff]
 	wsErrorHighlight = all
+[credential]
+[credential]
+	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/2.0.4/libexec/git-credential-manager-2.0.4.jar
