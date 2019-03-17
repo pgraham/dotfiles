@@ -302,6 +302,9 @@ let g:templates_no_builtin_templates = 1
 " ale setup
 let g:ale_sign_column_always = 1
 
+nmap <leader>j <Plug>(ale_next_wrap)
+nmap <leader>k <Plug>(ale_previous_wrap)
+
 " Autocommands
 " ---------------------------------
 if has("autocmd")
