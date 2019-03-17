@@ -265,7 +265,7 @@ autocmd FileType javascript :iabbrev <buffer> rjscls <esc>;TemplateHere react-cl
 " White space fix commands
 com! -bar Trim %s/\s\+$//e
 com! -bar Retab %retab!
-com! -bar FixWhiteSp Trim <bar> Tabs 4 <bar> Retab
+com! -bar FixWhiteSp Trim <bar> Tabs 4 <bar> Retab <bar> Tabs 2
 
 " General syntax fixes
 com! -bar SpAftComma %s/,\(\S\)/, \1/ce
