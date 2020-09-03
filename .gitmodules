@@ -112,3 +112,12 @@
 [submodule "link/.vim/bundle/vim-localvimrc"]
 	path = link/.vim/bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
+[submodule "link/.vim/bundle/iceberg.vim"]
+	path = link/.vim/bundle/iceberg.vim
+	url = https://github.com/cocopon/iceberg.vim.git
+[submodule "link/.vim/bundle/awesome-vim-colorschemes"]
+	path = link/.vim/bundle/awesome-vim-colorschemes
+	url = https://github.com/rafi/awesome-vim-colorschemes.git
+[submodule "link/.vim/bundle/vim-airline"]
+	path = link/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git

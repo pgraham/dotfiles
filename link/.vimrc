@@ -13,12 +13,16 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Colour config
 set t_Co=256
 set background=dark
-let g:spacegray_underline_search = 1
-let g:spacegray_use_italics = 1
-colorscheme spacegray
 if (has('termguicolors'))
   set termguicolors
+  let ayucolor="dark"
+  colorscheme ayu
+else
+  let g:spacegray_underline_search = 1
+  let g:spacegray_use_italics = 1
+  colorscheme spacegray
 endif
+hi Comment       ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#9398A4  cterm=italic    gui=italic
 
 " Don't clutter directory tree with undo files
 set undofile
