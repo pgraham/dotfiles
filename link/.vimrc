@@ -30,6 +30,8 @@ set undodir=~/.vim/undo
 
 " Don't use a swapfile, interfering with watchify
 set noswapfile
+set nobackup
+set nowritebackup
 
 " Status line config
 if (has('statusline'))
@@ -45,6 +47,11 @@ if (has('statusline'))
 
   let g:syntastic_enable_signs=1
 endif
+
+set cmdheight=2
+set updatetime=750
+set shortmess+=c
+set signcolumn=number
 
 " Indentation config. This is just the default, plugin will autodetect using
 " current file or other files in the same directory.
@@ -91,6 +98,28 @@ set ttyfast
 if exists('&relativenumber')
   set relativenumber
 endif
+
+" COC Configuration
+"" Use tab for trigger completion with characters ahead and navigate.
+"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+"" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Tab navigation.
 "
@@ -194,7 +223,7 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Replace current line with buffer - line-wise op
 " After op, replaced line will be in buffer
-nnoremap <leader>rp pkdd 
+nnoremap <leader>rp pkdd
 
 " Prevent accidentally pressing F1 from opening help. Open help with :help
 inoremap <F1> <esc>

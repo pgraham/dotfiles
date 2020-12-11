@@ -124,3 +124,6 @@
 [submodule "link/.vim/bundle/vim-eunuch"]
 	path = link/.vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "link/.vim/bundle/coc.nvim"]
+	path = link/.vim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim

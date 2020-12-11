@@ -1,6 +1,6 @@
 --type-set=css=.css,.less,.scss
 --type-set=json=.json
---type-set=js=.js,.jsx,.ts
+--type-set=js=.js,.jsx,.ts,.tsx
 --type-set=jsx=.jsx
 --type-set=properties=.properties
 --type-set=gradle=.gradle
