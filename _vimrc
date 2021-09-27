@@ -11,7 +11,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'Raimondi/delimitMate'
-Plug 'leafgarland/typescript-vim'
 Plug 'b4winckler/vim-angry'
 Plug 'kana/vim-textobj-user' | Plug 'inside/vim-textobj-jsxattr'
 
@@ -19,6 +18,9 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'embear/vim-localvimrc'
+
+Plug 'leafgarland/typescript-vim'
+Plug 'zigford/vim-powershell'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
