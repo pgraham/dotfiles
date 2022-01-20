@@ -1,4 +1,46 @@
-call pathogen#infect()
+" Automatic vim-plug install
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+" Colorschemes
+Plug 'morhetz/gruvbox'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'vim-scripts/ScrollColors'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Tim Pope
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-eunuch'
+
+" Text objects, motions
+Plug 'Raimondi/delimitMate'
+Plug 'b4winckler/vim-angry'
+Plug 'kana/vim-textobj-user'
+Plug 'inside/vim-textobj-jsxattr'
+Plug 'kana/vim-textobj-line'
+Plug 'bkad/CamelCaseMotion'
+Plug 'andrewradev/sideways.vim'
+
+" IDE
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'zigford/vim-powershell'
+Plug 'yuezk/vim-js'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'ap/vim-css-color'
+Plug 'yggdroot/indentLine'
+call plug#end()
+
 set modelines=0
 set backspace=indent,eol,start
 
@@ -11,18 +53,11 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Colour config
-set t_Co=256
-set background=dark
 if (has('termguicolors'))
   set termguicolors
-  let ayucolor="dark"
-  colorscheme ayu
-else
-  let g:spacegray_underline_search = 1
-  let g:spacegray_use_italics = 1
-  colorscheme spacegray
+  colorscheme gruvbox
 endif
-hi Comment       ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#9398A4  cterm=italic    gui=italic
+" hi Comment       ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#9398A4  cterm=italic    gui=italic
 
 " Don't clutter directory tree with undo files
 set undofile
@@ -33,23 +68,11 @@ set noswapfile
 set nobackup
 set nowritebackup
 
-" Status line config
-if (has('statusline'))
-  set laststatus=2
-
-  set statusline=%<%f\                           " Filename
-  set statusline+=%w%h%m%r                       " Options
-  set statusline+=%{fugitive#statusline()}       " Git
-  set statusline+=\ [%{&ff}/%Y]                  " Filetype
-  set statusline+=\ %#warningmsg#
-  set statusline+=%*
-  set statusline+=%=%-14.(%l,%c%V%)\ %p%%        " Right aligned file nav info
-
-  let g:syntastic_enable_signs=1
-endif
-
+" coc.nvim setup
+set encoding=utf-8
+set hidden
 set cmdheight=2
-set updatetime=750
+set updatetime=300
 set shortmess+=c
 set signcolumn=number
 
@@ -69,15 +92,10 @@ function! SetNoIndent()
 endfunction
 com! NoIndent call SetNoIndent()
 
-" Indent case: and default: statements inside switch statements
-:let g:PHP_vintage_case_default_indent = 1
-
 " Auto complete brackets and quotes
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
-
-let g:NERDSpaceDelims = 1
 
 function! SetTabs(width)
   let &shiftwidth=a:width
@@ -100,9 +118,6 @@ if exists('&relativenumber')
 endif
 
 " COC Configuration
-"" Use tab for trigger completion with characters ahead and navigate.
-"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-"" other plugin before putting this into your config.
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-cssmodules',
@@ -111,23 +126,34 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-tsserver'
   \ ]
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" Add CoC Prettier if prettier is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
 
-inoremap <silent><expr> <c-space> coc#refresh()
+" Add CoC ESLint if ESLint is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"" Use tab for trigger completion with characters ahead and navigate.
+"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+"" other plugin before putting this into your config.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+imap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Make <CR> auto-select the first completion item
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Tab navigation.
 "
@@ -269,9 +295,6 @@ nnoremap <leader>Nl a<cr><esc>l
 nnoremap <leader>sp i<space><esc>
 nnoremap <leader>Sp a<space><esc>
 
-" Map C-n to open NERDTree
-nnoremap <C-n> :NERDTreeToggle<CR>
-
 " Map some fugitive commands
 nnoremap <leader>gst :Gstatus<cr>
 nnoremap <leader>gco :Gcommit<cr>
@@ -301,57 +324,15 @@ autocmd FileType javascript :iabbrev <buffer> fnc function
 autocmd FileType javascript :iabbrev <buffer> afnc function (<c-r>=Eatchar('\m\s\<bar>/')<cr>
 autocmd FileType javascript :iabbrev <buffer> nfnc function ()
 autocmd FileType javascript :iabbrev <buffer> Prm new Promise((resolve, reject) => {<cr>});<c-r>=Eatchar('\m\s\<bar>/')<cr>
-autocmd FileType javascript :iabbrev <buffer> rjscls <esc>;TemplateHere react-class.jsx<cr>bcr-o
 
 " White space fix commands
 com! -bar Trim %s/\s\+$//e
 com! -bar Retab %retab!
 com! -bar FixWhiteSp Trim <bar> Tabs 4 <bar> Retab <bar> Tabs 2
 
-" General syntax fixes
-com! -bar SpAftComma %s/,\(\S\)/, \1/ce
-
-" Css code style fix commands
-com! -bar SpAftColon %s/:\(\S.\+;\)/: \1/ce
-com! -bar SpB4DecBlk %s/\(\w\){/\1 {/ce
-
-com! Cssfix FixWhiteSp <bar> SpAftComma <bar> SpAftColon <bar> SpB4DecBlk
-
-" Javascript code style fix commands
-com! -bar SpAftCtrl %s/\(function\|if\|for\|switch\)(/\1 (/ce
-com! -bar SpB4Blk %s/){/) {/ce
-com! -bar SpB4Else %s/}else/} else/ce
-com! -bar SpAftElse %s/else{/else {/ce
-com! -bar SpAroundElse SpB4Else <bar> SpAftElse
-com! -bar SpAftPropName %s/:\(\S\)/: \1/ce
-com! -bar SpB4Obj %s/{\(\S\)/{ \1/ce
-com! -bar SpAftObj %s/\(\S\)}/\1 }/ce
-com! -bar SpAroundObj SpB4Obj <bar> SpAftObj
-com! -bar SpB4Ar %s/\[\(\S\)/[ \1/ce
-com! -bar SpAftAr %s/\(\S\)]/\1 ]/ce
-com! -bar SpAroundAr SpB4Ar <bar> SpAftAr
-
-com! Jsfix FixWhiteSp <bar> SpAftCtrl <bar> SpB4Blk <bar> SpAroundElse <bar> SpAftComma <bar> SpAftPropName <bar> SpAroundObj <bar> SpAroundAr <bar> noh
-
-" local-vimrc setup
-let g:localvimrc_persistent = 2
-
-" vim-templates setup
-let g:templates_directory = "~/.dotfiles/vim-templates"
-let g:templates_no_builtin_templates = 1
-
-" ale setup
-let g:ale_sign_column_always = 1
-
-nmap <leader>j <Plug>(ale_next_wrap)
-nmap <leader>k <Plug>(ale_previous_wrap)
-
 " Autocommands
 " ---------------------------------
 if has("autocmd")
-
-  " Automatically open a NERDTree if Vim is open with no argument
-  au vimenter * if !argc() | NERDTree | endif
 
   " Automatically save files when focus is lost
   au FocusLost * :wa
@@ -362,20 +343,11 @@ if has("autocmd")
   " Apply markdown highlighting for *.md files
   au BufNewFile,BufReadPost *.md set filetype=markdown
 
-  " Apply php syntax highlighting to php.tmpl files
-  au BufNewFile,BufRead *.php.tmpl setf php
-
   " Apply JSON syntax to .babelrc files
   au BufNewFile,BufRead .babelrc setf json
 
   " Apply Shell syntax to ~/.bash_local
   au BufNewFile,BufRead .bash_local setf sh
-
-  " Remove jump to start of line for lines starting with # for php template files
-  au BufRead *.php.tmpl inoremap # X#
-
-  " Automatically remove trailing whitespace on buffer close
-  au BufLeave *.php :%s/\s\+$//e
 
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif

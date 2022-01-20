@@ -1,53 +1,55 @@
+[init]
+        templatedir = /Users/philip.graham/.acn-security-tools/git-template
 [color]
-	ui = true
+        ui = true
 
 [core]
-	editor = vim
-	excludesfile = /home/pgraham/.gitignore-global
+        editor = vim
+        excludesfile = /home/pgraham/.gitignore-global
 
 [alias]
-	d  = diff -- ':(exclude)package-lock.json'
-	ds = diff --staged
-	st = status
+        d  = diff -- ':(exclude)package-lock.json'
+        ds = diff --staged
+        st = status
 
-# Index manipulation
-	ap = add --patch
-	un = reset HEAD
-	unp = reset --patch HEAD
-	co = checkout --
+        # Index manipulation
+        ap = add --patch
+        un = reset HEAD
+        unp = reset --patch HEAD
+        co = checkout --
 
-# Commit shortcuts
-	ci = commit -m
-	cia = commit -am
-	ci-cs-fixes = commit -m '"[minor] CS Fixes"'
-	cia-cs-fixes = commit -am '"[minor] CS Fixes"'
-	ci-ws-fixes = commit -m '"[minor] whitespace fixes"'
-	cia-ws-fixes = commit -am '"[minor] whitespace fixes"'
+        # Commit shortcuts
+        ci = commit -m
+        cia = commit -am
+        ci-cs-fixes = commit -m '"[minor] CS Fixes"'
+        cia-cs-fixes = commit -am '"[minor] CS Fixes"'
+        ci-ws-fixes = commit -m '"[minor] whitespace fixes"'
+        cia-ws-fixes = commit -am '"[minor] whitespace fixes"'
 
-# Branching
-	br = checkout -b
+        # Branching
+        br = checkout -b
 
-# History manipulation
-	backout = reset --soft HEAD~
+        # History manipulation
+        backout = reset --soft HEAD~
 
-# Stash shortcuts
-	sp = stash pop
-	spop = stash pop
-	ss = stash show -p
-	sl = stash list
-	sd = stash drop
+        # Stash shortcuts
+        sp = stash pop
+        spop = stash pop
+        ss = stash show -p
+        sl = stash list
+        sd = stash drop
 
-# Log shortcuts
-	log-stat = log --stat
+        # Log shortcuts
+        log-stat = log --stat
 
 [push]
-	default = simple
+        default = simple
+
+[pull]
+        rebase = true
 
 [include]
-	path = .gitconfig-user
+        path = .gitconfig-user
 
 [diff]
-	wsErrorHighlight = all
-[credential]
-[credential]
-	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/2.0.4/libexec/git-credential-manager-2.0.4.jar
+        wsErrorHighlight = all

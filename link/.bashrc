@@ -1,3 +1,5 @@
+echo 'Executing .bashrc'
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -52,11 +54,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[38;5;31m\]\u\[\033[0m\]@\[\033[38;5;138m\]\h\[\033[0m\]:\[\033[38;5;134m\]\w\[\033[38;5;11m\]\$(__git_ps1)\[\033[38;5;28m\]· \[\033[0m\]"
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+# if [ "$color_prompt" = yes ]; then
+    # PS1="${debian_chroot:+($debian_chroot)}\[\033[38;5;31m\]\u\[\033[0m\]@\[\033[38;5;138m\]\h\[\033[0m\]:\[\033[38;5;134m\]\w\[\033[38;5;11m\]\$(__git_ps1)\[\033[38;5;28m\]· \[\033[0m\]"
+# else
+    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -125,3 +127,7 @@ fi
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
