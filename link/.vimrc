@@ -55,6 +55,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Colour config
 if (has('termguicolors'))
   set termguicolors
+  set background=dark
   colorscheme gruvbox
 endif
 " hi Comment       ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#9398A4  cterm=italic    gui=italic
