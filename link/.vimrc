@@ -21,6 +21,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-unimpaired'
 
 " Text objects, motions
 Plug 'Raimondi/delimitMate'
@@ -33,12 +34,15 @@ Plug 'andrewradev/sideways.vim'
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'yggdroot/indentLine'
+
+" Language Support
 Plug 'zigford/vim-powershell'
 Plug 'yuezk/vim-js'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ap/vim-css-color'
-Plug 'yggdroot/indentLine'
+Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 
 set modelines=0
@@ -56,6 +60,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 if (has('termguicolors'))
   set termguicolors
   set background=dark
+  let g:gruvbox_italic=1
   colorscheme gruvbox
 endif
 " hi Comment       ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#9398A4  cterm=italic    gui=italic
@@ -145,7 +150,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 imap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Make <CR> auto-select the first completion item
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+imap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "<Plug>delimitMateCR"
 
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
