@@ -6,7 +6,7 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
 ## Manual
 
-1. Install iTerm2
+1. Install iTerm2 # Macos only
 1. Install oh-my-zsh
 2. Install nvm
 3. Install homebrew

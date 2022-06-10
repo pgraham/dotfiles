@@ -17,15 +17,6 @@ exit; fi
 
 ##########
 
-do_update=0
-while getopts ":u" opt; do
-  case $opt in
-    u)
-      do_update=1
-      ;;
-  esac
-done
-
 function log_error()   { echo -e " \033[38;5;124m✖\033[0m $@"; }
 function log_info()    { echo -e " \033[38;5;33m➜\033[0m $@"; }
 function log_success() { echo -e " \033[38;5;34m✔\033[0m $@"; }
@@ -146,11 +137,6 @@ if [[ ! -d ~/.dotfiles ]]; then
   log_info "Downloading dotfiles"
   git clone --recursive https://github.com/pgraham/dotfiles.git ~/.dotfiles
   cd ~/.dotfiles
-elif ((do_update)); then
-  log_info "Updating dotfiles and pull latest submodules"
-  cd ~/.dotfiles
-  git pull --recurse-submodules
-  git submodule update --remote --recursive
 else
   log_info "Updating dotfiles"
   cd ~/.dotfiles

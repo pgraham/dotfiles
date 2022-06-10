@@ -4,6 +4,9 @@
     "javascriptreact",
     "json",
     "typescript",
-    "javascript"
-  ]
+    "javascript",
+    "html",
+    "css"
+  ],
+  "tsserver.log": "verbose"
 }

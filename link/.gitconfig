@@ -1,5 +1,5 @@
 [init]
-        templatedir = /Users/philip.graham/.acn-security-tools/git-template
+	defaultBranch = main
 [color]
         ui = true
 
