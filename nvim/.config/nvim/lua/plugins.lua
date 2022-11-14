@@ -27,6 +27,12 @@ return require('packer').startup(function(use)
   use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
   use { 'lewis6991/gitsigns.nvim' }
 
+  -- Highlighting
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+
   -- Formatting
   use { 'windwp/nvim-ts-autotag' }
   use { 'windwp/nvim-autopairs' }
@@ -50,12 +56,6 @@ return require('packer').startup(function(use)
   use { 'hrsh7th/nvim-cmp' }
   use { 'glepnir/lspsaga.nvim' }
   use { 'jose-elias-alvarez/typescript.nvim'}
-
-  -- Highlighting
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

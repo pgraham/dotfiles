@@ -4,6 +4,6 @@
 *~
 backups/
 
-link/.vim/**/tags
-link/.vim/undo
-link/.vim/plugged
+link/.vim/plugged/
+link/.vim/undo/
+nvim/.config/nvim/plugin/packer_compiled.lua

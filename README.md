@@ -6,24 +6,40 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
 ## Manual
 
-1. Install iTerm2 # Macos only
-1. Install oh-my-zsh
-2. Install nvm
-3. Install homebrew
-4. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
-4. Install neovim (via homebrew)
+### MacOS
+
+1. Install iTerm2
+
+### Ubuntu
+
+1. Install zsh
+
+   [Oh-my-zsh zsh install instructions](nvim/.config/nvim/plugin/packer_compiled.lua)
+
+   ```
+   sudo apt install zsh
+   chsh -s $(which zsh)
+   ```
+
+### Common
+
+2. Install oh-my-zsh
+3. Install nvm
+4. Install homebrew
+5. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
+6. Install neovim (via homebrew)
    ```
    brew install neovim
    ```
-5. Install stow
+7. Install stow
    ```
    brew install stow
    ```
-5. Install ack
+8. Install ack
    ```
    brew install ack
    ```
-5. Install fira mono code
+9. Install fira mono code
    ```
    brew tap homebrew/cask-fonts
    brew install font-fira-code
