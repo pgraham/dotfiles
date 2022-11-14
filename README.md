@@ -11,9 +11,13 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 2. Install nvm
 3. Install homebrew
 4. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
-4. Install vim (via homebrew)
+4. Install neovim (via homebrew)
    ```
-   brew install vim
+   brew install neovim
+   ```
+5. Install stow
+   ```
+   brew install stow
    ```
 5. Install ack
    ```
@@ -27,7 +31,7 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
 ## TODO
 
-- Add manual steps to initial setup.
+- Add manual steps to initial setup. Adapt for ubuntu
 - Add way to externalize custom zsh startup since .zshrc get clobbered by
   ohmyzsh install. Something like:
   1. Install ohmyzsh
