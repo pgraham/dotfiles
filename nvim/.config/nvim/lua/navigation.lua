@@ -45,7 +45,7 @@ nmap('<F1>', '<esc>')
 vmap('<F1>', '<esc>')
 
 -- Quickly exit insert mode
-imap('jk', '<esc>')
+imap('jk', '<esc>:w<cr>')
 
 -- Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
 -- Original semicolon functionality is preserved by mapping to colon

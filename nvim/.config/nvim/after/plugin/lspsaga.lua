@@ -5,7 +5,6 @@ saga.init_lsp_saga()
 
 nmap('gh', '<cmd>Lspsaga lsp_finder<CR>')
 nmap('gr', '<cmd>Lspsaga rename<CR>')
-nmap('gd', '<cmd>Lspsaga peek_definition<CR>')
 nmap('<leader>d', '<cmd>Lspsaga hover_doc<CR>')
 keymap({'n','v'}, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { silent = true })
 nmap('<leader>cd', '<cmd>Lspsaga show_line_diaglostics<CR>')
