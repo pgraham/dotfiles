@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 echo "Dotfiles setup - Adapted from script of the same name by Ben Alman"
 

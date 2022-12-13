@@ -23,23 +23,63 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
 ### Common
 
-2. Install oh-my-zsh
-3. Install nvm
-4. Install homebrew
-5. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
-6. Install neovim (via homebrew)
+1. Install homebrew
+1. Install oh-my-zsh
+1. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
+1. Install neovim (via homebrew)
+
    ```
-   brew install neovim
+   # Macos
+   $ brew install neovim # or
+   $ brea install --HEAD neovim # for dev version
+
+   # Ubuntu
+   $ sudo add-apt-repository ppa:neovim-ppa/unstable
+   $ sudo apt update
+   $ sudo apt install neovim
    ```
-7. Install stow
+
+1.   Install tmux
+
+   ```
+   brew install tmux
+   ```
+
+1. Install stow
+
    ```
    brew install stow
    ```
-8. Install ack
+
+1.  Link stow config:
+   ```
+   cd ~/.dotfiles
+   stow -t ~ nvim
+   stow -t ~ tmux
+   ```
+
+1. Install tpm (tmux plugin manager)
+
+   ```
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   ```
+
+   Install tmux plugins:
+
+   ```
+   $ tmux
+   <prefix> + I
+   ```
+
+1. Install nvm
+1. Install ack
+
    ```
    brew install ack
    ```
-9. Install fira mono code
+
+1. Install fira mono code
+
    ```
    brew tap homebrew/cask-fonts
    brew install font-fira-code

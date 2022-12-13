@@ -64,8 +64,7 @@ return require('packer').startup(function(use)
   -- Formatting
   use { 'windwp/nvim-ts-autotag' }
   use { 'windwp/nvim-autopairs' }
-  use { 'jose-elias-alvarez/null-ls.nvim' }
-  use { 'MunifTanjim/prettier.nvim' }
+  use { 'jose-elias-alvarez/null-ls.nvim', requires = { "nvim-lua/plenary.nvim"}, }
 
   -- Highlighting
   use {
