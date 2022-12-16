@@ -1,8 +1,3 @@
-
--- Mappings for tab navigation
-nmap('<leader>h', 'gT')
-nmap('<leader>l', 'gt')
-
 -- A couple of mappings to complement ZZ and ZQ
 --
 --  -  ZA  -->  Quit all
@@ -53,5 +48,3 @@ nmap(';', ':')
 vmap(';', ':')
 nmap(':', ';')
 vmap(':', ';')
-
-
