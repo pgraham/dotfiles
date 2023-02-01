@@ -48,3 +48,20 @@ nmap(';', ':')
 vmap(';', ':')
 nmap(':', ';')
 vmap(':', ';')
+
+-- Insert blank line without entering insert mode.  Stay on current line
+nmap('<cr>', 'o<esc>:w<cr>')
+
+-- Insert line break without entering insert mode
+--
+--    <leader>nl    Insert line break under cursor
+--    <leader>Nl    Insert line break after cursor
+nmap('<leader>nl', 'i<cr><esc>l')
+nmap('<leader>Nl', 'a<cr><esc>l')
+
+-- Insert space without entering insert mode
+--
+--    <leader>sp    Insert space under cursor
+--    <leader>Sp    Insert space after cursro
+nmap('<leader>sp', 'i<space><esc>')
+nmap('<leader>Sp', 'a<space><esc>')

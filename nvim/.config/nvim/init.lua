@@ -18,15 +18,25 @@ function vmap(k, cmd)
   map('v', k, cmd)
 end
 
+-- Setup undo
+local homePath = os.getenv("HOME") or "~"
+local cachePath = os.getenv("XDG_CACHE_HOME") or homePath .. "/.cache"
+local undoPath = cachePath .. "/nvim/undo"
+
+local path = require('plenary.path')
+local undoDir = path:new(undoPath)
+undoDir:mkdir()
+
+vim.opt.undofile = true
+vim.opt.undodir = undoPath
+
 require('display')
 require('navigation')
 require('search')
 
-vim.cmd('ca tn tabnew')
-
 vim.api.nvim_create_user_command(
   'FixTabs',
-  function ()
+  function()
     vim.opt.tabstop = 2
     vim.opt.shiftwidth = 2
     vim.opt.expandtab = true

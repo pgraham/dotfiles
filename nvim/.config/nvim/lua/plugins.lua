@@ -19,6 +19,7 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-fugitive' }
   use { 'tpope/vim-surround' }
   use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-eunuch' }
   use { 'nvim-lua/plenary.nvim' }
 
   -- Theme
@@ -64,7 +65,10 @@ return require('packer').startup(function(use)
 
   -- Formatting
   use { 'windwp/nvim-ts-autotag' }
-  use { 'windwp/nvim-autopairs' }
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use { 'jose-elias-alvarez/null-ls.nvim', requires = { "nvim-lua/plenary.nvim" }, }
 
   -- Highlighting

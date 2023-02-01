@@ -39,11 +39,11 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
    $ sudo apt install neovim
    ```
 
-1.   Install tmux
+1. Install tmux
 
-   ```
-   brew install tmux
-   ```
+```
+brew install tmux
+```
 
 1. Install stow
 
@@ -51,12 +51,13 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
    brew install stow
    ```
 
-1.  Link stow config:
-   ```
-   cd ~/.dotfiles
-   stow -t ~ nvim
-   stow -t ~ tmux
-   ```
+1. Link stow config:
+
+```
+cd ~/.dotfiles
+stow -t ~ nvim
+stow -t ~ tmux
+```
 
 1. Install tpm (tmux plugin manager)
 
@@ -93,3 +94,9 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
   1. Install ohmyzsh
   2. echo "if [ -f ~/.zshrc_custom.sh ] source ~/.zshrc_custom.sh" >> ~/.zshrc
   3. Add .zshrc_custom.sh to link files
+
+## Notes
+
+### oh-my-zsh
+
+- Put config specific to local directly in ~/.zshrc

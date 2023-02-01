@@ -48,6 +48,9 @@
 [pull]
         rebase = true
 
+[diff]
+        wsErrorHighlight = all
+
 [include]
         path = .gitconfig-user
 
