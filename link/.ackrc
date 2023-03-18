@@ -6,3 +6,5 @@
 --type-set=gradle=.gradle
 --type-set=objc=.m,.h
 --type-set=ios=.m,.h,.swift
+--type-set=csv=.csv
+--type-set=tf=.tf
