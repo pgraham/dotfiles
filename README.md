@@ -53,50 +53,65 @@ brew install tmux
 
 1. Link stow config:
 
-```
-cd ~/.dotfiles
-stow -t ~ nvim
-stow -t ~ tmux
-```
+   ```
+   cd ~/.dotfiles
+   stow -t ~ nvim
+   stow -t ~ tmux
+   ```
+
+   Note: use `--adopt` option of stow if any of the stowed files already exist.
 
 1. Install tpm (tmux plugin manager)
 
-   ```
-   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-   ```
+```
 
-   Install tmux plugins:
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-   ```
-   $ tmux
-   <prefix> + I
-   ```
+```
+
+Install tmux plugins:
+
+```
+
+$ tmux
+<prefix> + I
+
+```
 
 1. Install nvm
 1. Install ack
 
-   ```
-   brew install ack
-   ```
+```
+
+brew install ack
+
+```
 
 1. Install fira mono code
 
-   ```
-   brew tap homebrew/cask-fonts
-   brew install font-fira-code
-   ```
+```
+
+brew tap homebrew/cask-fonts
+brew install font-fira-code
+
+```
 
 ## TODO
 
 - Add manual steps to initial setup. Adapt for ubuntu
 - Add way to externalize custom zsh startup since .zshrc get clobbered by
   ohmyzsh install. Something like:
-  1. Install ohmyzsh
-  2. echo "if [ -f ~/.zshrc_custom.sh ] source ~/.zshrc_custom.sh" >> ~/.zshrc
-  3. Add .zshrc_custom.sh to link files
+
+1. Install ohmyzsh
+2. echo "if [ -f ~/.zshrc_custom.sh ] source ~/.zshrc_custom.sh" >> ~/.zshrc
+3. Add .zshrc_custom.sh to link files
 
 ## Notes
 
 ### oh-my-zsh
 
 - Put config specific to local directly in ~/.zshrc
+
+```
+
+```
