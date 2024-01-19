@@ -12,6 +12,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+  -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
   use { 'tpope/vim-sleuth' }
@@ -37,9 +38,19 @@ return require('packer').startup(function(use)
   use { 'bkad/CamelCaseMotion' }
   use { 'andrewradev/sideways.vim' }
 
+  -- Navigation
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    -- or                            , branch = '0.1.x',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+  use { 'theprimeagen/harpoon' }
+  use { 'mbbill/undotree' }
+
   -- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
@@ -79,6 +90,7 @@ return require('packer').startup(function(use)
       ts_update()
     end,
   }
+  use { 'nvim-treesitter/playground' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

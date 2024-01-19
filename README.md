@@ -57,6 +57,7 @@ brew install tmux
    cd ~/.dotfiles
    stow -t ~ nvim
    stow -t ~ tmux
+   stow -t ~ oh-my-zsh
    ```
 
    Note: use `--adopt` option of stow if any of the stowed files already exist.

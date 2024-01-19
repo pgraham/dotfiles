@@ -1,6 +1,4 @@
-require('plugins')
-
-vim.g.mapleader = ','
+require('zeropantsonebib')
 
 function map(mode, k, cmd)
   vim.api.nvim_set_keymap(mode, k, cmd, { noremap = true, silent = true })
