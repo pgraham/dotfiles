@@ -39,9 +39,7 @@ vim.keymap.set('n', '<leader>rp', 'pkdd')
 vim.keymap.set('n', '<leader>p', [["_dP]])
 
 -- Prevent accidentally pressing F1 from opening help. Open help with :help
-vim.keymap.set('i', '<F1>', '<esc>')
-vim.keymap.set('n', '<F1>', '<esc>')
-vim.keymap.set('v', '<F1>', '<esc>')
+vim.keymap.set({ 'i', 'n', 'v' }, '<F1>', '<esc>')
 
 -- Insert blank line without entering insert mode.  Stay on current line
 vim.keymap.set('n', '<cr>', 'o<esc>:w<cr>')
@@ -69,8 +67,7 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- Yank into system clipboard
-vim.keymap.set('n', '<leader>y', [["+y]])
-vim.keymap.set('v', '<leader>y', [["+y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 -- delete to void register

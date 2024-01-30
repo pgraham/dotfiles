@@ -1,2 +1,0 @@
-#!/bin/sh
-nohup chromium-browser --disable-web-security --user-data-dir=/home/pgraham/.chromium-cordova >/dev/null 2>&1 &

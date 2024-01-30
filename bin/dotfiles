@@ -23,7 +23,7 @@ function log_success() { echo -e " \033[38;5;34m✔\033[0m $@"; }
 
 function link_files() {
   local base dest
-  local files=(~/.dotfiles/link/*)
+  local files=(~/.dotfiles/link/*(D))
 
   log_info "Linking files in link/"
   for file in "${files[@]}"; do
@@ -47,40 +47,6 @@ function link_files() {
 
     log_success "Linking ~/$base"
     ln -sf ${file#$HOME/} ~/
-  done
-}
-
-function link_bin() {
-  local base dest
-  local files=(~/.dotfiles/bin/*)
-
-  log_info "Linking /bin files"
-
-  if [ ! -d "~/bin" ]; then
-    mkdir ~/bin
-  fi
-
-  for file in "${files[@]}"; do
-
-    if [[ $file = *.un~ ]]; then
-      continue
-    fi
-
-    base="$(basename $file)"
-    dest="$HOME/bin/$base"
-
-    if [[ "$file" -ef "$dest" ]]; then
-      log_info "Skipping $file, same file"
-      continue
-    fi
-
-    if [[ -e "$dest" ]]; then
-      backup "$dest"
-      log_info "Backing up $dest"
-    fi
-
-    log_success "Linking ~/bin/$base"
-    ln -sf "$file" ~/bin/
   done
 }
 
@@ -144,5 +110,4 @@ else
   git pull
 fi
 
-link_bin
 link_files
