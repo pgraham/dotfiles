@@ -109,7 +109,8 @@ shopt -s dotglob
 shopt -s nullglob
 
 # If Git is not installed install it
-if [[ ! "$(type -P git)" ]]; then
+
+if [[ ! "$(type -p git)" ]]; then
 
   if [[ ! "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
     log_error "Unable to install Git. Please install manually and try again."
@@ -141,13 +142,7 @@ else
   log_info "Updating dotfiles"
   cd ~/.dotfiles
   git pull
-  git submodule update --init --recursive --quiet
 fi
 
 link_bin
 link_files
-
-# Create dump for Vim undo files if it doesn't already exist
-if [[ ! -d ~/.vim/undo ]]; then
-  mkdir ~/.vim/undo
-fi
