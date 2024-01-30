@@ -1,8 +1,11 @@
 # dotfiles
 
-```sh
-bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfiles)"
-```
+1. Create SSH credentials and upload to Github
+1. Clone repo and run setup
+
+   ```sh
+   bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfiles)"
+   ```
 
 ## Manual
 
@@ -41,9 +44,9 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
 1. Install tmux
 
-```sh
-brew install tmux
-```
+   ```sh
+   brew install tmux
+   ```
 
 1. Install stow
 
@@ -64,37 +67,37 @@ brew install tmux
 
 1. Install tpm (tmux plugin manager)
 
-```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   ```sh
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-```
+   ```
 
-Install tmux plugins:
+1. Install tmux plugins:
 
-```sh
+   ```sh
 
-$ tmux
-<prefix> + I
+   $ tmux
+   <prefix> + I
 
-```
+   ```
 
 1. Install nvm
 1. Install ack
 
-```sh
+   ```sh
 
-brew install ack
+   brew install ack
 
-```
+   ```
 
 1. Install fira mono code
 
-```sh
+   ```sh
 
-brew tap homebrew/cask-fonts
-brew install font-fira-code
+   brew tap homebrew/cask-fonts
+   brew install font-fira-code
 
-```
+   ```
 
 ## TODO
 
@@ -103,11 +106,4 @@ brew install font-fira-code
   ohmyzsh install. Something like:
 
 1. Install ohmyzsh
-2. echo "if [ -f ~/.zshrc_custom.sh ] source ~/.zshrc_custom.sh" >> ~/.zshrc
-3. Add .zshrc_custom.sh to link files
-
-## Notes
-
-### oh-my-zsh
-
-- Put config specific to local directly in ~/.zshrc
+2. echo "if [ -f ~/.dotfiles/.zshrc_custom.sh ] source ~/.dotfiles/.zshrc_custom.sh" >> ~/.zshrc
