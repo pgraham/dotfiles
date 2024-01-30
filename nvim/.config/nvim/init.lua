@@ -29,7 +29,6 @@ vim.opt.undofile = true
 vim.opt.undodir = undoPath
 
 require('display')
-require('navigation')
 require('search')
 
 vim.api.nvim_create_user_command(

@@ -1,6 +1,6 @@
 # dotfiles
 
-```
+```sh
 bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfiles)" && source ~/.bashrc
 ```
 
@@ -16,7 +16,7 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
    [Oh-my-zsh zsh install instructions](nvim/.config/nvim/plugin/packer_compiled.lua)
 
-   ```
+   ```sh
    sudo apt install zsh
    chsh -s $(which zsh)
    ```
@@ -28,7 +28,7 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 1. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
 1. Install neovim (via homebrew)
 
-   ```
+   ```sh
    # Macos
    $ brew install neovim # or
    $ brea install --HEAD neovim # for dev version
@@ -41,19 +41,19 @@ bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfile
 
 1. Install tmux
 
-```
+```sh
 brew install tmux
 ```
 
 1. Install stow
 
-   ```
+   ```sh
    brew install stow
    ```
 
 1. Link stow config:
 
-   ```
+   ```sh
    cd ~/.dotfiles
    stow -t ~ nvim
    stow -t ~ tmux
@@ -64,15 +64,14 @@ brew install tmux
 
 1. Install tpm (tmux plugin manager)
 
-```
-
+```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ```
 
 Install tmux plugins:
 
-```
+```sh
 
 $ tmux
 <prefix> + I
@@ -82,7 +81,7 @@ $ tmux
 1. Install nvm
 1. Install ack
 
-```
+```sh
 
 brew install ack
 
@@ -90,7 +89,7 @@ brew install ack
 
 1. Install fira mono code
 
-```
+```sh
 
 brew tap homebrew/cask-fonts
 brew install font-fira-code
@@ -112,7 +111,3 @@ brew install font-fira-code
 ### oh-my-zsh
 
 - Put config specific to local directly in ~/.zshrc
-
-```
-
-```
