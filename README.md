@@ -69,34 +69,29 @@
 
    ```sh
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
    ```
 
 1. Install tmux plugins:
 
    ```sh
-
    $ tmux
    <prefix> + I
-
    ```
 
 1. Install nvm
-1. Install ack
+1. Install ack, ripgrep, and fd (the latter 2 are used by nvim)
 
    ```sh
-
    brew install ack
-
+   brew install ripgrep
+   brew install fd
    ```
 
 1. Install fira mono code
 
    ```sh
-
    brew tap homebrew/cask-fonts
    brew install font-fira-code
-
    ```
 
 ## TODO

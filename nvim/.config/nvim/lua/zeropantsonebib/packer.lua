@@ -40,11 +40,15 @@ return require('packer').startup(function(use)
 
   -- Navigation
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
-    -- or                            , branch = '0.1.x',
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
-  use { 'theprimeagen/harpoon' }
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
   use { 'mbbill/undotree' }
 
   -- LSP
@@ -70,8 +74,11 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
-  use { 'glepnir/lspsaga.nvim' }
-  use { 'onsails/lspkind.nvim' }
+  use({
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function() require('lspsaga').setup({}) end,
+  })
   use { 'jose-elias-alvarez/typescript.nvim' }
 
   -- Formatting
@@ -90,6 +97,7 @@ return require('packer').startup(function(use)
       ts_update()
     end,
   }
+
   use { 'nvim-treesitter/playground' }
 
   -- Automatically set up your configuration after cloning packer.nvim

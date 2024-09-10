@@ -1,4 +1,6 @@
 vim.g.mapleader = ','
+
+-- Open Netrw
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- Use <tab> to jump between matching delimiters
@@ -24,6 +26,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>K', 'K')
 -- Quickly exit insert mode
 vim.keymap.set('i', 'jk', '<esc>:w<cr>')
 
+-- Quickly exit visual mode
+vim.keymap.set('v', 'vv', '<esc>')
+
 -- Map semicolon to colon to avoid extra <shift> press to enter cmdline mode.
 -- Original semicolon functionality is preserved by mapping to colon
 vim.keymap.set({ 'n', 'v' }, ';', ':')
@@ -35,28 +40,25 @@ vim.cmd('nnoremap <expr> gp \'`[\' . strpart(getregtype(), 0, 1) . \'`]\'')
 -- Replace current line with buffer - line-wise op
 -- After op, replaced line will be in buffer
 vim.keymap.set('n', '<leader>rp', 'pkdd')
--- After op, patsted line will be in buffer
+-- After op, pasted line will be in buffer
 vim.keymap.set('n', '<leader>p', [["_dP]])
 
 -- Prevent accidentally pressing F1 from opening help. Open help with :help
 vim.keymap.set({ 'i', 'n', 'v' }, '<F1>', '<esc>')
 
--- Insert blank line without entering insert mode.  Stay on current line
+-- Insert blank line without entering insert mode.
 vim.keymap.set('n', '<cr>', 'o<esc>:w<cr>')
 
--- Insert line break without entering insert mode
---
---    <leader>nl    Insert line break under cursor
---    <leader>Nl    Insert line break after cursor
-vim.keymap.set('n', '<leader>nl', 'i<cr><esc>l')
-vim.keymap.set('n', '<leader>Nl', 'a<cr><esc>l')
-
--- Insert space without entering insert mode
+-- Insert white-space without entering insert mode
 --
 --    <leader>sp    Insert space under cursor
---    <leader>Sp    Insert space after cursro
+--    <leader>Sp    Insert space after cursor
+--    <leader>nl    Insert line break under cursor
+--    <leader>Nl    Insert line break after cursor
 vim.keymap.set('n', '<leader>sp', 'i<space><esc>')
 vim.keymap.set('n', '<leader>Sp', 'a<space><esc>')
+vim.keymap.set('n', '<leader>nl', 'i<cr><esc>l')
+vim.keymap.set('n', '<leader>Nl', 'a<cr><esc>l')
 
 -- Move highlighted lines up/down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
