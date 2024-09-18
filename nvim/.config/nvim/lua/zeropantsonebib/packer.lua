@@ -79,7 +79,6 @@ return require('packer').startup(function(use)
     after = 'nvim-lspconfig',
     config = function() require('lspsaga').setup({}) end,
   })
-  use { 'jose-elias-alvarez/typescript.nvim' }
 
   -- Formatting
   use { 'windwp/nvim-ts-autotag' }
