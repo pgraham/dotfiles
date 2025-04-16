@@ -1,61 +1,60 @@
-local lsp_zero = require("lsp-zero")
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    local opts = { buffer = event.buf }
+    local optsSilent = { buffer = event.buf, silent = true }
+    local keymap = vim.keymap.set
 
-lsp_zero.on_attach(function(client, bufnr)
-	local opts = { buffer = bufnr, remap = false }
+    keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+    keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+    keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+    keymap("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+    keymap("n", "gr", "<cmd>Lspsaga finder<CR>", opts)
+    keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+    keymap("n", "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", opts)
 
-	vim.keymap.set("n", "gd", function()
-		vim.lsp.buf.definition()
-	end, opts)
-	vim.keymap.set("n", "<leader>vws", function()
-		vim.lsp.buf.workspace_symbol()
-	end, opts)
-	vim.keymap.set("n", "<leader>vd", function()
-		vim.diagnostic.open_float()
-	end, opts)
-	vim.keymap.set("n", "<leader>vca", function()
-		vim.lsp.buf.code_action()
-	end, opts)
-	vim.keymap.set("n", "<leader>vrr", function()
-		vim.lsp.buf.references()
-	end, opts)
-	vim.keymap.set("n", "<leader>vrn", function()
-		vim.lsp.buf.rename()
-	end, opts)
-	vim.keymap.set("i", "<C-h>", function()
-		vim.lsp.buf.signature_help()
-	end, opts)
-end)
+    -- LSP Saga
+    keymap("n", "gn", "<cmd>Lspsaga rename<CR>", opts)
+
+    keymap({ "n", "v" }, "gA", "<cmd>Lspsaga code_action<CR>", optsSilent)
+    keymap("n", "gf", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+    keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+    keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+    keymap("n", "[E", function()
+      require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end, optsSilent)
+    keymap("n", "]E", function()
+      require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end, optsSilent)
+  end,
+})
+
+local lspconfig_defaults = require("lspconfig").util.default_config
+lspconfig_defaults.capabilities =
+  vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "ts_ls" },
-	handlers = {
-		lsp_zero.default_setup,
-		lua_ls = function()
-			local lua_opts = lsp_zero.nvim_lua_ls()
-			require("lspconfig").lua_ls.setup(lua_opts)
-		end,
-	},
+  handlers = {
+    function(server_name)
+      require("lspconfig")[server_name].setup({})
+    end,
+  },
 })
 
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
-	sources = {
-		{ name = "path" },
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "luasnip", keyword_length = 2 },
-		{ name = "buffer", keyword_length = 3 },
-	},
-	formatting = lsp_zero.cmp_format(),
-	mapping = cmp.mapping.preset.insert({
-		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
-		["<C-Space>"] = cmp.mapping.complete(),
-	}),
+  sources = {
+    { name = "nvim_lsp" },
+  },
+  snippet = {
+    expand = function(args)
+      -- You need Neovim v0.10 to use vim.snippet
+      vim.snippet.expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({}),
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
