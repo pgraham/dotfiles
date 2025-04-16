@@ -24,11 +24,15 @@ return require("packer").startup(function(use)
 	use({ "nvim-lua/plenary.nvim" })
 
 	-- Theme
-	use({ "ellisonleao/gruvbox.nvim" })
-	use({ "nvim-lualine/lualine.nvim" })
-	use({ "nvim-tree/nvim-web-devicons" })
-	use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
-	use({ "lewis6991/gitsigns.nvim" })
+	use { 'ellisonleao/gruvbox.nvim' }
+	use { 'nvim-lualine/lualine.nvim' }
+	use { 'nvim-tree/nvim-web-devicons' }
+	use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
+	use { 'lewis6991/gitsigns.nvim' }
+	use ({
+	  'brenoprata10/nvim-highlight-colors',
+	  config = function() require('nvim-highlight-colors').setup({}) end
+	})
 
 	-- Text objects, motion
 	use({ "b4winckler/vim-angry" })
