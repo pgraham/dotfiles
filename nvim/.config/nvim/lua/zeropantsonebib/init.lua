@@ -1,2 +1,1 @@
-require('zeropantsonebib.remap')
-require('zeropantsonebib.packer')
+require("zeropantsonebib.remap")
