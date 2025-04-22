@@ -1,6 +1,9 @@
 require("config.lazy")
 require("config.remap")
 
+-- Load plugin config
+require("config.barbar")
+
 function map(mode, k, cmd)
 	vim.api.nvim_set_keymap(mode, k, cmd, { noremap = true, silent = true })
 end
