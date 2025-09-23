@@ -3,6 +3,7 @@ vim.g.mapleader = ","
 require("config.lazy")
 require("config.remap")
 require("config.folds")
+require("config.quickfix")
 
 -- Load plugin config
 require("config.barbar")
