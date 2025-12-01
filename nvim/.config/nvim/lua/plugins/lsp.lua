@@ -1,10 +1,12 @@
 return {
 	{
-		"williamboman/mason.nvim",
-		lazy = false,
+		"mason-org/mason-lspconfig.nvim",
 		opts = {},
+		dependencies = {
+			"mason-org/mason.nvim",
+			"neovim/nvim-lspconfig",
+		},
 	},
-	{ "williamboman/mason-lspconfig.nvim" },
 
 	-- Autocomplete
 	{
@@ -57,11 +59,6 @@ return {
 		"neovim/nvim-lspconfig",
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-		},
 		init = function()
 			-- Reserve a space in the gutter
 			-- This will avoid an annoying layout shift in the screen
@@ -107,17 +104,6 @@ return {
 						require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 					end, optsSilent)
 				end,
-			})
-
-			require("mason-lspconfig").setup({
-				ensure_installed = {},
-				handlers = {
-					-- this first function is the "default handler"
-					-- it applies to every language server without a "custom handler"
-					function(server_name)
-						require("lspconfig")[server_name].setup({})
-					end,
-				},
 			})
 		end,
 	},

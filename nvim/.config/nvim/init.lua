@@ -1,28 +1,27 @@
 vim.g.mapleader = ","
 
+function Map(mode, k, cmd)
+	vim.api.nvim_set_keymap(mode, k, cmd, { noremap = true, silent = true })
+end
+
+function Nmap(k, cmd)
+	Map("n", k, cmd)
+end
+
+function Imap(k, cmd)
+	Map("i", k, cmd)
+end
+
+function Vmap(k, cmd)
+	Map("v", k, cmd)
+end
+
 require("config.lazy")
 require("config.remap")
 require("config.folds")
 require("config.quickfix")
-
--- Load plugin config
-require("config.barbar")
-
-function map(mode, k, cmd)
-	vim.api.nvim_set_keymap(mode, k, cmd, { noremap = true, silent = true })
-end
-
-function nmap(k, cmd)
-	map("n", k, cmd)
-end
-
-function imap(k, cmd)
-	map("i", k, cmd)
-end
-
-function vmap(k, cmd)
-	map("v", k, cmd)
-end
+require("config.display")
+require("config.search")
 
 -- Setup undo
 local homePath = os.getenv("HOME") or "~"
@@ -35,9 +34,6 @@ undoDir:mkdir()
 
 vim.opt.undofile = true
 vim.opt.undodir = undoPath
-
-require("display")
-require("search")
 
 vim.api.nvim_create_user_command("FixTabs", function()
 	vim.opt.tabstop = 2
