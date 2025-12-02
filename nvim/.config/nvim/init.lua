@@ -22,6 +22,7 @@ require("config.folds")
 require("config.quickfix")
 require("config.display")
 require("config.search")
+require("config.lsp")
 
 -- Setup undo
 local homePath = os.getenv("HOME") or "~"
