@@ -1,10 +1,15 @@
 # dotfiles
 
 1. Create SSH credentials and upload to Github
-1. Clone repo and run setup
 
    ```sh
-   bash -c "$(curl -fsSL https://raw.github.com/pgraham/dotfiles/master/bin/dotfiles)"
+   ssh-keygen -t ed25519
+   ```
+   
+2. Clone repo and run setup
+
+   ```sh
+   git clone git@github.com:pgraham/dotfiles.git
    ```
 
 ## Manual
@@ -28,15 +33,22 @@
 
 1. Install homebrew
 1. Install oh-my-zsh
-1. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew)
-1. Install neovim (via homebrew)
+1. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew):
+
+   ```sh
+   $ brew install zsh-syntax-highlighting
+   $ brew install zsh-autosuggestions
+   ```
+   
+1. Install neovim
 
    ```sh
    # Macos
    $ brew install neovim # or
-   $ brea install --HEAD neovim # for dev version
+   $ brew install --HEAD neovim # for dev version
 
    # Ubuntu
+   # TODO Update instructions for installing from source
    $ sudo add-apt-repository ppa:neovim-ppa/unstable
    $ sudo apt update
    $ sudo apt install neovim
@@ -79,20 +91,14 @@
    ```
 
 1. Install nvm
-1. Install ack, ripgrep, and fd (the latter 2 are used by nvim)
+1. Install ripgrep, and fd
 
    ```sh
-   brew install ack
    brew install ripgrep
    brew install fd
    ```
 
-1. Install fira mono code
-
-   ```sh
-   brew tap homebrew/cask-fonts
-   brew install font-fira-code
-   ```
+1. Install fira mono code: https://github.com/tonsky/FiraCode/wiki/Installing
 
 ## TODO
 
