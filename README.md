@@ -102,9 +102,10 @@
    <prefix> + I
    ```
 
-1. Install nvm
-   Once installed, install latest LTS Node version
+1. Install nvm and latest LTS Node version with global packages.
 
+   [NVM install](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+   
    ```sh
    $ nvm install --lts
    ```
