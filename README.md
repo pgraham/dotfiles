@@ -17,6 +17,7 @@
 ### MacOS
 
 1. Install iTerm2
+1. Install homebrew
 
 ### Ubuntu
 
@@ -31,13 +32,20 @@
 
 ### Common
 
-1. Install homebrew
 1. Install oh-my-zsh
 1. Install zsh-syntax-highlighting, zsh-autosuggestions (via homebrew):
 
    ```sh
-   $ brew install zsh-syntax-highlighting
-   $ brew install zsh-autosuggestions
+   # zsh-autosuggestions
+   $ cd ~/.zsh
+   $ git clone https://github.com/zsh-users/zsh-autosuggestions
+   $ echo "source ${(q-)PWD}/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
+   # zsh-syntax-highlighting -- must be at the end of .zshrc
+   $ mkdir ~/.zsh
+   $ cd ~/.zsh
+   $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+   $ echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
    ```
    
 1. Install neovim
@@ -54,7 +62,7 @@
    $ sudo apt install neovim
    ```
 
-1. Install tmux
+1. Install tmux (Macos Only, is installed by default with Ubuntu)
 
    ```sh
    brew install tmux
@@ -63,7 +71,11 @@
 1. Install stow
 
    ```sh
+   # Macos
    brew install stow
+
+   # Ubuntu
+   sudo apt install stow
    ```
 
 1. Link stow config:
@@ -94,11 +106,19 @@
 1. Install ripgrep, and fd
 
    ```sh
+   # Macos
    brew install ripgrep
    brew install fd
+
+   # Ubuntu
+   sudo apt install ripgrep
+   sudo apt install fd-find
+   mkdir -p ~/.local/bin
+   ln -s $(which fdfind) ~/.local/bin/fd
    ```
 
 1. Install fira mono code: https://github.com/tonsky/FiraCode/wiki/Installing
+   This should only be necessary on Macos because iTerm will apply the font.
 
 ## TODO
 
