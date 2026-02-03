@@ -103,6 +103,17 @@
    ```
 
 1. Install nvm
+   Once installed, install latest LTS Node version
+
+   ```sh
+   $ nvm install --lts
+   ```
+
+   Then, install global packages
+   ```sh
+   $ npm i -g @fsouza/prettierd pm2 @vtsls/language-server
+   ```
+   
 1. Install ripgrep, and fd
 
    ```sh
