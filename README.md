@@ -81,6 +81,10 @@
 1. Link stow config:
 
    ```sh
+   # Ensure that non-nvim related content in .config doesn't get added to
+   # dotfiles directory
+   mkdir ~/.config
+
    cd ~/.dotfiles
    stow -t ~ nvim
    stow -t ~ tmux
