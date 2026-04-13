@@ -8,4 +8,4 @@ link/.vim/**/tags
 link/.vim/undo
 link/.vim/plugged
 
-nvim/.config/nvim/plugin/packer_compiled.lua
+lazy-lock.json
