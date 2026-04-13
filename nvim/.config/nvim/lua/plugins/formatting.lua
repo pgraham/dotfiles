@@ -11,7 +11,9 @@ return {
 				lsp_format = "fallback",
 			},
 			formatters_by_ft = {
+				html = { "prettierd", "prettier", stop_after_first = true },
 				lua = { "stylua" },
+				json = { "prettierd", "prettier", stop_after_first = true },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
@@ -37,7 +39,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			local configs = require("nvim-treesitter.configs")
+			local configs = require("nvim-treesitter.config")
 
 			configs.setup({
 				-- A list of parser names, or "all" (the five listed parsers should always be installed)
