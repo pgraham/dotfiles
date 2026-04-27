@@ -33,6 +33,7 @@ return {
 			Nmap("<leader>by", "<Cmd>BufferPin<CR>")
 			-- Close buffer
 			Nmap("<leader>x", "<Cmd>BufferClose<CR>")
+			Nmap("<leader>X", "<Cmd>BufferClose!<CR>")
 			-- Wipeout buffer
 			--                 :BufferWipeout
 			-- Close commands
