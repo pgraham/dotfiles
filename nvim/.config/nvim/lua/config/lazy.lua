@@ -15,9 +15,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyVimStarted",
+	desc = "Update lazy.nvim plugins",
+	callback = function(event)
+		require('lazy').sync({ wait = false, show = false })
+	end,
+})
+
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	checker = { enabled = true },
+	checker = { enabled = false,  },
 })
