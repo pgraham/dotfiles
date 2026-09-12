@@ -66,3 +66,16 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- delete to void register
 vim.keymap.set("n", "<leader>d", [["_d]])
+
+-- open diagnostic float automatically
+-- Go to previous diagnostic and show popup
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.goto_prev()
+	vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = "Previous diagnostic with popup" })
+
+-- Go to next diagnostic and show popup
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.goto_next()
+	vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = "Next diagnostic with popup" })

@@ -1,41 +1,30 @@
 return {
 	-- LSP
 	{
-		"neovim/nvim-lspconfig",
-	},
-	{
 		"mason-org/mason.nvim",
-		lazy = false,
-		opts = {},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		opts = {},
 		dependencies = {
-			"mason-org/mason.nvim",
 			"neovim/nvim-lspconfig",
+			"mason-org/mason-lspconfig.nvim",
 		},
-	},
+		config = function()
+			-- 1. Initialize Mason package manager
+			require("mason").setup({ ui = { border = "rounded" } })
 
-	-- Autocomplete
-	{ "rafamadriz/friendly-snippets" },
-	{
-		"L3MON4D3/LuaSnip",
-		version = "v2.*",
-		build = "make install_jsregexp",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-		},
-	},
-	{ "nvim-mini/mini.icons", version = false, opts = {} },
-	{ "nvim-mini/mini.snippets", version = false, opts = {} },
-	{ "nvim-mini/mini.completion", version = false, opts = {} },
-	{
-		"nvimdev/lspsaga.nvim",
-		opts = {},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
+			-- 2. Let mason-lspconfig bridge the names and auto-enable them
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "pyright" },
+				automatic_enable = true, -- Tells Neovim to run vim.lsp.enable() natively
+			})
+
+			-- 3. Native 0.12 way to override specific server settings
+			-- No more lspconfig.lua_ls.setup()!
+			vim.lsp.config("lua_ls", {
+				settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+					},
+				},
+			})
+		end,
 	},
 }
