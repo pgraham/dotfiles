@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		branch = "main", -- Ensure you are using the modern, stable branch
 		build = ":TSUpdate",
 		-- Using 'opts' automatically calls require("nvim-treesitter").setup(opts) under the hood
