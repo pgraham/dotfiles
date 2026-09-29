@@ -1,4 +1,4 @@
-local prettier = { "prettierd", "prettier", stop_after_first = true }
+local biome = { "biome", "prettierd", "prettier", stop_after_first = true }
 
 return {
 	-- Formatting
@@ -14,12 +14,31 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				html = prettier,
-				json = prettier,
-				javascript = prettier,
-				javascriptreact = prettier,
-				typescript = prettier,
-				typescriptreact = prettier,
+				html = biome,
+				json = biome,
+				javascript = biome,
+				javascriptreact = biome,
+				typescript = biome,
+				typescriptreact = biome,
+				css = biome,
+			},
+			formatters = {
+				biome = {
+					condition = function(self, ctx)
+						return vim.fs.root(ctx.dirname, { "biome.json" }) ~= nil
+					end,
+				},
+				prettierd = {
+					-- ONLY consider prettierd "available" if a Prettier config file exists
+					condition = function(self, ctx)
+						return vim.fs.root(ctx.dirname, {
+							".prettierrc",
+							".prettierrc.json",
+							".prettierrc.js",
+							"prettier.config.js",
+						}) ~= nil
+					end,
+				},
 			},
 		},
 	},
